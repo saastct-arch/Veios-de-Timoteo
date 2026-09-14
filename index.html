@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veios de Timóteo — Circuito de Patrimônio</title>
+<meta name="description" content="Circuito de patrimônio material e imaterial de Timóteo, Minas Gerais. Mapa, rota e ficha de cada bem.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <span class="marca">Veios de <span>Timóteo</span></span>
+    <nav>
+      <a href="#mapa-sec">Mapa</a>
+      <a href="#bens">Bens</a>
+      <a href="#cidade">A cidade</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="olho">Timóteo · Minas Gerais · Vale do Aço</p>
+    <h1>O patrimônio de uma cidade construída pelo aço</h1>
+    <p>Igrejas, praças, uma estação de trem, um forno de tijolos, festas que atravessam gerações. Um circuito que reúne o que Timóteo reconhece — e o que ainda precisa reconhecer — como sua própria memória.</p>
+    <div class="numeros">
+      <div><b id="n-total">26</b><span>bens no mapa</span></div>
+      <div><b id="n-imaterial">4</b><span>imateriais</span></div>
+      <div><b id="n-reconhecido">4</b><span>reconhecidos</span></div>
+      <div><b>864<span style="font-size:.5em">m</span></b><span>ponto mais alto</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="mapa-sec">
+  <div class="wrap">
+    <div class="cab">
+      <h2>O mapa do circuito</h2>
+      <p>Cada parada está numerada de norte a sul. Clique em um ponto do mapa — ou em uma ficha abaixo — para ler sobre ele.</p>
+    </div>
+
+    <div class="filtros" role="group" aria-label="Filtrar por categoria">
+      <button class="filtro" data-cat="imaterial" aria-pressed="true"><i></i>Imaterial</button>
+      <button class="filtro" data-cat="potencial" aria-pressed="true"><i></i>Material — potencial</button>
+      <button class="filtro" data-cat="reconhecido" aria-pressed="true"><i></i>Material — reconhecido</button>
+    </div>
+
+    <div class="mapa-grid">
+      <div id="mapa" role="application" aria-label="Mapa do circuito de patrimônio de Timóteo"></div>
+      <aside class="painel" id="painel">
+        <div class="painel-vazio">
+          <strong>Escolha uma parada</strong>
+          Clique em um pino do mapa para ver a foto, a descrição e o motivo de aquele bem integrar o circuito.
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="bens">
+  <div class="wrap">
+    <div class="cab">
+      <h2>Os bens do circuito</h2>
+      <p>Vinte e seis bens georreferenciados, em três categorias. Onde falta foto ou texto, o cartão diz exatamente o que falta.</p>
+    </div>
+    <div class="grade" id="grade"></div>
+  </div>
+</section>
+
+<section id="cidade">
+  <div class="wrap">
+    <div class="cab">
+      <h2>Timóteo em números</h2>
+      <p>Dados demográficos do município. Os campos marcados aguardam conferência na fonte oficial antes da entrega.</p>
+    </div>
+    <div class="ibge">
+      <div><b>3168606</b><span>Código IBGE</span></div>
+      <div><b>—</b><span>População</span><em>a preencher</em></div>
+      <div><b>—</b><span>Área (km²)</span><em>a preencher</em></div>
+      <div><b>—</b><span>Densidade (hab/km²)</span><em>a preencher</em></div>
+      <div><b>—</b><span>IDHM</span><em>a preencher</em></div>
+      <div><b>—</b><span>PIB per capita</span><em>a preencher</em></div>
+    </div>
+    <p style="margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--tinta-3)">
+      Fonte a citar: IBGE Cidades — Panorama de Timóteo (MG). Cada número deve trazer o ano de referência ao lado.
+    </p>
+  </div>
+</section>
+
+<section id="incorporar">
+  <div class="wrap">
+    <div class="cab">
+      <h2>Bens ainda sem localização</h2>
+      <p>Vieram na lista do mapa colaborativo com nome e referência de lugar, mas sem coordenada. Entram no circuito assim que forem pinados no My&nbsp;Maps.</p>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Bem</th><th>Referência de local</th></tr></thead>
+        <tbody id="sem-coord"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="cab">
+      <h2>Sobre o circuito</h2>
+      <p>Trabalho da disciplina Estúdio Patrimônio e Planejamento Regional (Ap2), a partir do levantamento de campo do grupo e do mapa colaborativo “Circuito Patrimônios”.</p>
+    </div>
+    <p style="max-width:62ch;color:var(--tinta-2)">
+      O circuito distingue <strong>bens já reconhecidos oficialmente</strong> de <strong>propostas do estudo</strong> — a diferença está na cor de cada pino. A lista não é fechada: é um inventário vivo, pensado para crescer conforme novos bens forem identificados e documentados pela cidade.
+    </p>
+    <p style="max-width:62ch;color:var(--tinta-2);margin-top:14px">
+      Os textos de valor derivam do levantamento do Ap2. Bens sem fonte documental permanecem sem descrição, por decisão metodológica: em inventário de patrimônio, informação não verificada compromete o registro.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Veios de Timóteo — Circuito de Patrimônio Material e Imaterial · Timóteo, Minas Gerais</p>
+    <p>Estúdio Patrimônio e Planejamento Regional · Ap2 · Entrega 19/10/2026</p>
+    <p>Mapa: OpenStreetMap · Fotografias do acervo do grupo</p>
+  </div>
+</footer>
+
+<script src="assets/vendor/leaflet/leaflet.js"></script>
+<script src="data/pontos.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

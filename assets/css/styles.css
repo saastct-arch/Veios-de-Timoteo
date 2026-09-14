@@ -1,0 +1,218 @@
+/* Veios de Timóteo — Circuito de Patrimônio
+   Tokens do design system "Veios de Timóteo". */
+
+:root{
+  --verde-900:#122018; --verde-800:#161A17; --verde-700:#16241C; --verde-600:#1B2B22;
+  --verde-500:#24382D; --verde-400:#2F4B39; --verde-300:#33503F; --verde-200:#3E5E49;
+  --verde-100:#BFD0C4; --verde-050:#DFE8E1;
+  --cobre-900:#382011; --cobre-800:#5E3A23; --cobre-700:#744527; --cobre-600:#845335;
+  --cobre-500:#A96A3D; --cobre-400:#BD7F4F; --cobre-300:#D29C71; --cobre-200:#E3C2A4;
+  --cobre-100:#F2DFCE; --cobre-050:#FBF3EC;
+  --neutro-050:#FAFAF8; --neutro-100:#F4F4F1; --neutro-200:#E8E9E4;
+  --neutro-300:#D6D8D1; --neutro-400:#B4BAB5; --neutro-500:#7A8A80;
+
+  --bg:var(--verde-600); --bg-alt:var(--verde-700); --card:var(--verde-500);
+  --tinta:#F1F5F2; --tinta-2:#A9B8AE; --tinta-3:#86998D;
+  --linha:var(--verde-300); --linha-sutil:var(--verde-400);
+  --acento:var(--cobre-300); --acento-forte:var(--cobre-400);
+
+  --c-imaterial:#BD7F4F; --c-potencial:#7FA98C; --c-reconhecido:#E3C2A4;
+
+  --display:"Marcellus","Palatino Linotype",Georgia,serif;
+  --corpo:"Archivo","Helvetica Neue",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+
+  --gut:clamp(20px,5vw,56px);
+  --max:1180px;
+  --r:3px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--tinta);
+  font-family:var(--corpo); font-size:16.5px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block}
+a{color:var(--acento); text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--acento); outline-offset:3px}
+.wrap{max-width:var(--max); margin:0 auto; padding-inline:var(--gut)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- topo ---------- */
+.topo{position:sticky; top:0; z-index:900; background:rgba(22,36,28,.93);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--linha)}
+.topo .wrap{display:flex; align-items:center; gap:20px; height:62px}
+.marca{font-family:var(--display); font-size:19px; letter-spacing:.02em; color:var(--tinta);
+  white-space:nowrap}
+.marca span{color:var(--acento)}
+.topo nav{margin-left:auto; display:flex; gap:24px}
+.topo nav a{font-family:var(--mono); font-size:11.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--tinta-2)}
+.topo nav a:hover{color:var(--acento); text-decoration:none}
+@media(max-width:720px){ .topo nav{display:none} }
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(56px,10vw,104px) clamp(40px,7vw,72px); border-bottom:1px solid var(--linha)}
+.olho{font-family:var(--mono); font-size:11.5px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--acento); margin:0 0 22px}
+.hero h1{font-family:var(--display); font-weight:400; font-size:clamp(38px,7.2vw,72px);
+  line-height:1.05; margin:0; letter-spacing:.004em; text-wrap:balance; max-width:16ch}
+.hero p{font-size:clamp(17px,2vw,20px); color:var(--tinta-2); max-width:56ch; margin:24px 0 0}
+.numeros{display:flex; flex-wrap:wrap; gap:14px 44px; margin-top:38px}
+.numeros div{min-width:92px}
+.numeros b{font-family:var(--display); font-size:34px; line-height:1; display:block;
+  color:var(--acento); font-variant-numeric:tabular-nums}
+.numeros span{font-family:var(--mono); font-size:10.5px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--tinta-3); display:block; margin-top:8px}
+
+/* ---------- seções ---------- */
+section{padding-block:clamp(48px,7vw,88px)}
+section+section{border-top:1px solid var(--linha)}
+.cab{margin-bottom:34px; max-width:60ch}
+.cab h2{font-family:var(--display); font-weight:400; font-size:clamp(26px,3.6vw,38px);
+  margin:0 0 10px; letter-spacing:.005em; text-wrap:balance}
+.cab p{color:var(--tinta-2); margin:0; font-size:16px}
+
+/* ---------- filtros ---------- */
+.filtros{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:18px}
+.filtro{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  background:transparent; color:var(--tinta-2); border:1px solid var(--linha);
+  padding:8px 14px; border-radius:var(--r); cursor:pointer;
+  display:inline-flex; align-items:center; gap:8px; transition:border-color .18s, color .18s}
+.filtro:hover{border-color:var(--acento); color:var(--tinta)}
+.filtro[aria-pressed="true"]{border-color:var(--acento); color:var(--verde-700);
+  background:var(--acento); font-weight:600}
+.filtro i{width:9px; height:9px; border-radius:50%; background:currentColor; flex:none}
+.filtro[data-cat="imaterial"] i{background:var(--c-imaterial)}
+.filtro[data-cat="potencial"] i{background:var(--c-potencial)}
+.filtro[data-cat="reconhecido"] i{background:var(--c-reconhecido)}
+.filtro[aria-pressed="true"] i{background:var(--verde-700)}
+
+/* ---------- mapa ---------- */
+.mapa-grid{display:grid; grid-template-columns:1fr 340px; gap:20px; align-items:start}
+@media(max-width:940px){ .mapa-grid{grid-template-columns:1fr} }
+#mapa{height:min(72vh,620px); min-height:400px; border:1px solid var(--linha);
+  border-radius:var(--r); background:var(--verde-700); z-index:1}
+@media(max-width:940px){ #mapa{height:56vh} }
+
+.leaflet-container{font-family:var(--corpo)}
+.leaflet-popup-content-wrapper{background:var(--verde-500); color:var(--tinta);
+  border-radius:var(--r); box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.leaflet-popup-tip{background:var(--verde-500)}
+.leaflet-popup-content{margin:12px 14px; font-size:14px}
+.leaflet-popup-content b{font-family:var(--display); font-weight:400; font-size:16px;
+  display:block; margin-bottom:3px}
+.leaflet-bar a{background:var(--verde-500); color:var(--tinta); border-color:var(--linha)}
+.leaflet-bar a:hover{background:var(--verde-400); color:var(--acento)}
+.leaflet-control-attribution{background:rgba(22,36,28,.85)!important; color:var(--tinta-3)!important}
+.leaflet-control-attribution a{color:var(--tinta-2)!important}
+
+.pino{display:grid; place-items:center; width:30px; height:30px; border-radius:50% 50% 50% 4px;
+  transform:rotate(45deg); font-family:var(--mono); font-weight:600; font-size:12px;
+  color:var(--verde-900); box-shadow:0 3px 10px rgba(0,0,0,.45); border:1.5px solid rgba(0,0,0,.25)}
+.pino b{transform:rotate(-45deg); font-weight:600}
+.pino.imaterial{background:var(--c-imaterial)}
+.pino.potencial{background:var(--c-potencial)}
+.pino.reconhecido{background:var(--c-reconhecido)}
+.pino.ativo{outline:3px solid var(--acento); outline-offset:2px}
+
+/* ---------- painel lateral ---------- */
+.painel{border:1px solid var(--linha); border-radius:var(--r); background:var(--card);
+  overflow:hidden; position:sticky; top:78px}
+.painel-vazio{padding:30px 22px; color:var(--tinta-3); font-size:15px}
+.painel-vazio strong{display:block; font-family:var(--display); font-size:17px;
+  color:var(--tinta-2); margin-bottom:7px; font-weight:400}
+.painel figure{margin:0; position:relative; aspect-ratio:16/10; background:var(--verde-700)}
+.painel figure img{width:100%; height:100%; object-fit:cover}
+.painel-corpo{padding:19px 21px 23px}
+.painel .num{font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--acento)}
+.painel h3{font-family:var(--display); font-weight:400; font-size:21px; margin:7px 0 0;
+  line-height:1.22; text-wrap:balance}
+.painel .resumo{font-size:15px; color:var(--tinta-2); margin:13px 0 0}
+.painel .end{font-family:var(--mono); font-size:11.5px; color:var(--tinta-3); margin:13px 0 0}
+.painel ul{margin:16px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+.painel li{position:relative; padding-left:18px; font-size:14.5px; color:var(--tinta-2)}
+.painel li::before{content:""; position:absolute; left:0; top:.66em; width:9px; height:1px;
+  background:var(--acento)}
+.tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px}
+.tag{font-family:var(--mono); font-size:10px; letter-spacing:.05em; color:var(--tinta-3);
+  border:1px solid var(--linha); padding:3px 8px; border-radius:2px}
+
+/* ---------- selos ---------- */
+.selo{font-family:var(--mono); font-size:9.5px; font-weight:600; letter-spacing:.11em;
+  text-transform:uppercase; padding:4px 9px; border-radius:2px; display:inline-block}
+.selo.imaterial{background:rgba(189,127,79,.2); color:var(--c-imaterial)}
+.selo.potencial{background:rgba(127,169,140,.18); color:var(--c-potencial)}
+.selo.reconhecido{background:rgba(227,194,164,.18); color:var(--c-reconhecido)}
+
+/* identificadores de pendência */
+.falta{position:absolute; inset:0; display:grid; place-content:center; gap:9px;
+  text-align:center; padding:18px; background:
+   repeating-linear-gradient(45deg,var(--verde-700) 0 10px,var(--verde-600) 10px 20px)}
+.falta span{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--cobre-300); border:1px dashed var(--cobre-600); padding:7px 12px; border-radius:2px}
+.falta small{font-family:var(--mono); font-size:10px; color:var(--tinta-3)}
+.aviso-texto{margin-top:16px; border-left:2px solid var(--cobre-500); padding:11px 14px;
+  background:rgba(56,32,17,.4); font-size:13.5px; color:var(--tinta-2)}
+.aviso-texto b{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--cobre-300); display:block; margin-bottom:5px}
+
+/* ---------- grade de fichas ---------- */
+.grade{display:grid; grid-template-columns:repeat(auto-fill,minmax(258px,1fr)); gap:18px}
+.ficha{border:1px solid var(--linha); border-radius:var(--r); background:var(--card);
+  overflow:hidden; text-align:left; cursor:pointer; color:inherit; padding:0;
+  font:inherit; display:flex; flex-direction:column;
+  transition:border-color .2s, transform .2s}
+.ficha:hover{border-color:var(--acento); transform:translateY(-3px)}
+.ficha figure{margin:0; aspect-ratio:16/10; background:var(--verde-700); position:relative}
+.ficha figure img{width:100%; height:100%; object-fit:cover}
+.ficha-corpo{padding:15px 17px 18px; display:flex; flex-direction:column; gap:9px; flex:1}
+.ficha .num{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; color:var(--acento)}
+.ficha h3{font-family:var(--display); font-weight:400; font-size:17.5px; margin:0;
+  line-height:1.25; text-wrap:balance}
+.ficha p{font-size:13.5px; color:var(--tinta-3); margin:0; flex:1}
+
+/* ---------- tabelas / listas ---------- */
+.tw{overflow-x:auto; border:1px solid var(--linha); border-radius:var(--r); background:var(--card)}
+table{border-collapse:collapse; width:100%; min-width:520px; font-size:14.5px}
+th,td{text-align:left; padding:11px 15px; border-bottom:1px solid var(--linha-sutil);
+  vertical-align:top}
+th{font-family:var(--mono); font-size:10px; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--tinta-3); background:var(--verde-700); font-weight:600}
+tr:last-child td{border-bottom:none}
+td.mono{font-family:var(--mono); font-size:12px; color:var(--tinta-3)}
+
+/* ---------- números da cidade ---------- */
+.ibge{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1px;
+  background:var(--linha); border:1px solid var(--linha); border-radius:var(--r); overflow:hidden}
+.ibge div{background:var(--card); padding:20px 22px}
+.ibge b{font-family:var(--display); font-size:29px; line-height:1; display:block;
+  font-variant-numeric:tabular-nums}
+.ibge span{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--tinta-3); display:block; margin-top:9px}
+.ibge em{font-family:var(--mono); font-style:normal; font-size:10px; color:var(--cobre-400);
+  display:block; margin-top:5px}
+
+/* ---------- rodapé ---------- */
+footer{border-top:1px solid var(--linha); padding-block:44px; background:var(--verde-700)}
+footer .wrap{display:grid; gap:12px}
+footer p{margin:0; font-family:var(--mono); font-size:11.5px; color:var(--tinta-3); line-height:1.75}
+
+/* ---------- animações ---------- */
+@media (prefers-reduced-motion: no-preference){
+  .anim{animation:sobe .6s cubic-bezier(.22,.8,.3,1) both}
+  @keyframes sobe{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
+  .ficha{animation:sobe .5s cubic-bezier(.22,.8,.3,1) both}
+  .painel-corpo>*{animation:sobe .4s cubic-bezier(.22,.8,.3,1) both}
+  .painel-corpo>*:nth-child(2){animation-delay:.04s}
+  .painel-corpo>*:nth-child(3){animation-delay:.08s}
+  .painel-corpo>*:nth-child(4){animation-delay:.12s}
+  .leaflet-marker-icon{transition:filter .2s}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important; transition-duration:.001ms!important}
+}
