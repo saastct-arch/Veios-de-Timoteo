@@ -4,7 +4,6 @@
   'use strict';
 
   var PONTOS = window.PONTOS || [];
-  var SEM_COORD = window.SEM_COORDENADA || [];
   var CATS = ['imaterial', 'potencial', 'reconhecido'];
   var ROTULO = {
     imaterial: 'Imaterial',
@@ -176,16 +175,6 @@
     });
   }
 
-  /* ---------- tabela dos bens sem coordenada ---------- */
-  function montaSemCoord() {
-    var tb = document.getElementById('sem-coord');
-    SEM_COORD.forEach(function (o) {
-      var tr = el('tr');
-      tr.appendChild(el('td', null, o.nome));
-      tr.appendChild(el('td', 'mono', o.ref || '—'));
-      tb.appendChild(tr);
-    });
-  }
 
   /* ---------- contadores ---------- */
   function contadores() {
@@ -211,7 +200,6 @@
     contadores();
     iniciaMapa();
     montaGrade();
-    montaSemCoord();
     ligaFiltros();
     revela();
   });

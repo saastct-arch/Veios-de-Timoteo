@@ -18,7 +18,7 @@ Abrir o `index.html` direto pelo `file://` não funciona — o navegador bloquei
 
 ```
 index.html                  página única
-data/pontos.js              os 26 bens georreferenciados + os 13 sem coordenada
+data/pontos.js              os 26 bens georreferenciados
 assets/css/styles.css       tokens do design system "Veios de Timóteo"
 assets/js/app.js            mapa, rota, filtros e painel de detalhe
 assets/img/                 19 fotografias do acervo do grupo
@@ -64,7 +64,8 @@ O site mostra o que falta, em vez de esconder:
 | **Sem fotografia** | **8** |
 | Com texto de valor | 11 |
 | **Sem texto de valor** | **15** |
-| Sem coordenada (fora do mapa) | 13 |
+| Não pinados no My Maps | 13 |
+
 
 ### Falta fotografar
 
@@ -82,18 +83,24 @@ Os 15 bens marcados `pendente: true`. Textos de valor não foram escritos porque
 documental — em inventário de patrimônio, informação não verificada compromete o registro.
 Os 11 textos existentes derivam integralmente do levantamento do Ap2.
 
-### Bens sem coordenada
+### Bens ainda não pinados no My Maps
 
-13 bens vieram da lista do My Maps apenas com nome e referência de lugar. Estão listados na
-seção "Bens ainda sem localização" e entram no mapa assim que forem pinados no My Maps.
-Dois registros foram removidos por não trazerem informação alguma: uma entrada chamada apenas
-"Residência" e uma duplicata do Centro de Vivência.
+Não aparecem no site — entram assim que ganharem coordenada no My Maps:
+
+Fundação Acesita (antiga Casa de Hóspedes) · Colégio Macedo Soares ·
+Antigo Clube dos Operários (Associação dos Aposentados) · Bica das Bromélias ·
+Sede da Fazenda Boa Vista · Biquinha · Conjunto Residencial do Bairro Alphaville ·
+Conjunto Residencial do Bairro Recanto Verde · Fazenda dos Maia ·
+Escola Municipal Infantil Ana Moura · Escola Estadual João Cotta de Figueiredo Barcelos ·
+Antiga tubulação de água do Morro Bela Vista · Praça 29 de Abril
+
+Dois registros do KML foram descartados por não trazerem informação alguma: uma entrada
+chamada apenas "Residência" e uma duplicata do Centro de Vivência.
 
 ### Dados do IBGE
 
-A seção "Timóteo em números" está com os campos vazios, marcados `a preencher`. Preencher em
-`index.html` a partir de `cidades.ibge.gov.br/brasil/mg/timoteo/panorama`, citando o ano de
-referência de cada número.
+Preenchidos na seção "Timóteo em números", com o ano de referência ao lado de cada
+indicador. Fonte: IBGE Cidades@ — Panorama de Timóteo (MG). Código do município: **3168705**.
 
 ## Design system
 
