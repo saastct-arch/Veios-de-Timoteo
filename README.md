@@ -41,6 +41,7 @@ Tudo vive em `data/pontos.js`. Cada ponto:
  "resumo": "Um dos espaços de fé...",      // 2-3 linhas, linguagem de visitante
  "porque": ["...", "..."],                 // por que é patrimônio
  "tags": ["histórico", "religioso"],
+ "fontes": [{"t": "Título da fonte", "u": "https://..."}],   // u vazio = fonte offline
  "pendente": false                         // true = sem texto de valor levantado
 }
 ```
@@ -62,8 +63,8 @@ O site mostra o que falta, em vez de esconder:
 | Bens no mapa | 26 |
 | Com fotografia | 18 |
 | **Sem fotografia** | **8** |
-| Com texto de valor | 11 |
-| **Sem texto de valor** | **15** |
+| Com texto de valor | 26 |
+| Com fonte citada | 26 |
 | Não pinados no My Maps | 13 |
 
 
@@ -77,11 +78,15 @@ Chafariz e Olho d'Água — Biquinha
 Horizontal, mínimo 1600px, luz da manhã ou fim de tarde, fachada inteira de frente.
 Anotar o crédito de cada foto. Rostos identificáveis exigem autorização de uso de imagem.
 
-### Falta pesquisa documental
+### Procedência dos textos
 
-Os 15 bens marcados `pendente: true`. Textos de valor não foram escritos porque não há fonte
-documental — em inventário de patrimônio, informação não verificada compromete o registro.
-Os 11 textos existentes derivam integralmente do levantamento do Ap2.
+Todos os 26 bens têm texto de valor e fonte citada, visível no rodapé de cada ficha.
+
+- **11 bens** — levantamento de campo do grupo (Ap2).
+- **15 bens** — pesquisa documental em fontes públicas: ipatrimônio, Prefeitura e Câmara
+  de Timóteo, Wikipédia, Aperam, Enciclopédia Itaú Cultural e imprensa regional.
+
+Cada ficha lista suas fontes com link. Nenhum dado foi afirmado sem origem verificável.
 
 ### Bens ainda não pinados no My Maps
 

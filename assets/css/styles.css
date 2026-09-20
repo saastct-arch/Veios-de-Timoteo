@@ -160,6 +160,16 @@ section+section{border-top:1px solid var(--linha)}
 .aviso-texto b{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
   color:var(--cobre-300); display:block; margin-bottom:5px}
 
+/* fontes citadas na ficha */
+.fontes{margin-top:18px; padding-top:14px; border-top:1px solid var(--linha-sutil);
+  display:grid; gap:6px}
+.fontes b{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--tinta-3); font-weight:600}
+.fontes a,.fontes span{font-size:12.5px; line-height:1.45; color:var(--tinta-2)}
+.fontes a{text-decoration:underline; text-decoration-color:var(--linha);
+  text-underline-offset:2px}
+.fontes a:hover{color:var(--acento); text-decoration-color:var(--acento)}
+
 /* ---------- grade de fichas ---------- */
 .grade{display:grid; grid-template-columns:repeat(auto-fill,minmax(258px,1fr)); gap:18px}
 .ficha{border:1px solid var(--linha); border-radius:var(--r); background:var(--card);

@@ -123,6 +123,22 @@
         'Este bem ainda não tem descrição de valor levantada. Falta pesquisa documental antes de publicar.'));
       corpo.appendChild(av);
     }
+    if (p.fontes && p.fontes.length) {
+      var fo = el('div', 'fontes');
+      fo.appendChild(el('b', null, p.fontes.length > 1 ? 'Fontes' : 'Fonte'));
+      p.fontes.forEach(function (f) {
+        if (f.u) {
+          var a = el('a', null, f.t);
+          a.href = f.u;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          fo.appendChild(a);
+        } else {
+          fo.appendChild(el('span', null, f.t));
+        }
+      });
+      corpo.appendChild(fo);
+    }
     painel.appendChild(corpo);
 
     document.querySelectorAll('.pino').forEach(function (n) {
