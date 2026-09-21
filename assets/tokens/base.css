@@ -1,0 +1,11 @@
+/* Minimal global base. Consumers get sane defaults, not a reset framework. */
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-page);color:var(--text-body);font:var(--type-body);-webkit-font-smoothing:antialiased;text-wrap:pretty}
+h1,h2,h3,h4,h5,h6{margin:0;color:var(--text-heading);font-weight:var(--weight-regular)}
+p{margin:0}
+img,svg{display:block;max-width:100%}
+a{color:var(--text-accent);text-decoration:none;border-bottom:1px solid color-mix(in oklab,var(--green-500) 36%,transparent);transition:var(--transition-control)}
+a:hover{color:var(--green-700);border-bottom-color:var(--green-700)}
+a:active{color:var(--green-800)}
+:focus-visible{outline:2px solid var(--action-focus-ring);outline-offset:2px}
+::selection{background:var(--green-100);color:var(--ink-900)}

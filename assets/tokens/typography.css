@@ -1,0 +1,67 @@
+/* Veios de Timóteo — typography.
+   Three faces, each doing an institutional job:
+
+   • Marcellus — inscriptional Roman capitals. The wordmark, totem plates and
+     monumental headings. This is the lettering tradition of engraved civic
+     plaques, which is exactly what the physical route is made of.
+   • Source Serif 4 — a text serif built for long-form reading. All prose.
+     Reading matter in this brand is history, so it is set like history.
+   • Archivo — a grotesque with strong capitals and tight vertical metrics.
+     Labels, eyebrows, wayfinding, buttons, nav — the signage voice.
+
+   SUBSTITUTION: no font binaries were supplied. These are the nearest
+   institutional matches on Google Fonts. See readme.md > Visual foundations. */
+:root{
+  --font-display:'Marcellus', 'Trajan Pro', 'Optima', 'Palatino Linotype', serif;
+  --font-serif:'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  --font-sans:'Archivo', 'Helvetica Neue', Helvetica, system-ui, sans-serif;
+  --font-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --weight-display:400;
+  --weight-light:300;
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+
+  /* Type scale — 1.25 ratio off a 16px base */
+  --size-3xs:11px;
+  --size-2xs:12px;
+  --size-xs:13px;
+  --size-sm:15px;
+  --size-md:17px;
+  --size-lg:20px;
+  --size-xl:25px;
+  --size-2xl:31px;
+  --size-3xl:39px;
+  --size-4xl:49px;
+  --size-5xl:61px;
+  --size-6xl:76px;
+
+  --leading-tight:1.08; /* @kind other */
+  --leading-snug:1.22; /* @kind other */
+  --leading-normal:1.5; /* @kind other */
+  --leading-relaxed:1.62; /* @kind other */
+
+  /* Tracking — inscriptional capitals are letterspaced; prose is not. */
+  --tracking-wordmark:0.26em; /* @kind other */
+  --tracking-display:0.09em; /* @kind other */
+  --tracking-eyebrow:0.16em; /* @kind other */
+  --tracking-label:0.1em; /* @kind other */
+  --tracking-normal:0; /* @kind other */
+  --tracking-tight:-0.006em; /* @kind other */
+
+  /* Composed roles */
+  --type-wordmark:var(--weight-display) var(--size-4xl)/1 var(--font-display);
+  --type-display:var(--weight-display) var(--size-3xl)/var(--leading-tight) var(--font-display);
+  --type-monument:var(--weight-display) var(--size-2xl)/1.18 var(--font-display);
+  --type-headline:var(--weight-regular) var(--size-2xl)/var(--leading-snug) var(--font-serif);
+  --type-title:var(--weight-semibold) var(--size-lg)/var(--leading-snug) var(--font-sans);
+  --type-subtitle:var(--weight-regular) var(--size-md)/var(--leading-normal) var(--font-serif);
+  --type-body:var(--weight-regular) var(--size-sm)/var(--leading-relaxed) var(--font-serif);
+  --type-body-sm:var(--weight-regular) var(--size-xs)/var(--leading-relaxed) var(--font-serif);
+  --type-ui:var(--weight-medium) var(--size-sm)/1.4 var(--font-sans);
+  --type-eyebrow:var(--weight-semibold) var(--size-2xs)/1.2 var(--font-sans);
+  --type-label:var(--weight-semibold) var(--size-3xs)/1.2 var(--font-sans);
+  --type-quote:var(--weight-regular) var(--size-xl)/1.36 var(--font-serif);
+}

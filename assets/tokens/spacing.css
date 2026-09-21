@@ -1,0 +1,47 @@
+/* Veios de Timóteo — spacing, radii, layout.
+   The boards are built on flush-edge panels separated by thin gutters:
+   generous interior padding, very small inter-panel gaps, near-square corners. */
+:root{
+  --space-0:0;
+  --space-1:2px;
+  --space-2:4px;
+  --space-3:8px;
+  --space-4:12px;
+  --space-5:16px;
+  --space-6:20px;
+  --space-7:24px;
+  --space-8:32px;
+  --space-9:40px;
+  --space-10:48px;
+  --space-11:64px;
+  --space-12:80px;
+  --space-13:104px;
+  --space-14:136px;
+
+  /* Panel gutter — the hairline gap between boards */
+  --gutter-panel:6px;
+  --gutter-grid:var(--space-7);
+
+  /* Radii — the brand is essentially square. Circles only for icon discs and map pins. */
+  --radius-none:0;
+  --radius-xs:2px;
+  --radius-sm:3px;
+  --radius-md:4px;
+  --radius-lg:6px;
+  --radius-pill:999px;
+  --radius-circle:50%;
+
+  /* Borders */
+  --border-hairline:1px;
+  --border-strong:2px;
+  --border-rule-accent:2px;
+
+  /* Layout */
+  --container-max:1240px;
+  --container-narrow:640px;
+  --container-wide:1440px;
+  --measure-body:62ch;
+  --measure-caption:44ch;
+
+  --header-height:72px;
+}

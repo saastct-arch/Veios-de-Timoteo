@@ -3,141 +3,242 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Veios de Timóteo — Circuito de Patrimônio</title>
-<meta name="description" content="Circuito de patrimônio material e imaterial de Timóteo, Minas Gerais. Mapa, rota e ficha de cada bem.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<title>Veios de Timóteo</title>
+<meta name="description" content="Uma rota urbana que conecta os principais patrimônios de Timóteo (MG) por meio de um elemento contínuo no espaço urbano: o Veio.">
+
+<link rel="stylesheet" href="assets/tokens/fonts.css">
+<link rel="stylesheet" href="assets/tokens/colors.css">
+<link rel="stylesheet" href="assets/tokens/typography.css">
+<link rel="stylesheet" href="assets/tokens/spacing.css">
+<link rel="stylesheet" href="assets/tokens/effects.css">
+<link rel="stylesheet" href="assets/tokens/motion.css">
+<link rel="stylesheet" href="assets/tokens/base.css">
 <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 
-<header class="topo">
-  <div class="wrap">
-    <span class="marca">Veios de <span>Timóteo</span></span>
-    <nav>
-      <a href="#mapa-sec">Mapa</a>
-      <a href="#bens">Bens</a>
-      <a href="#cidade">A cidade</a>
-      <a href="#sobre">Sobre</a>
-    </nav>
-  </div>
+<header class="navbar" id="navbar" data-tone="light">
+  <a class="logo logo--sm logo--light navbar__brand" href="#top">
+    <svg viewBox="0 0 84 200" width="27.28" height="64.48" aria-hidden="true" style="overflow:visible">
+      <g fill="none" stroke="var(--copper-300)" stroke-width="3.2" stroke-linecap="round">
+        <path d="M18 30C6 60 28 78 16 108c-11 28 11 44 1 62"/>
+        <path d="M42 26C28 60 54 76 40 110c-13 32 10 46 1 60"/>
+        <path d="M66 32C54 62 76 80 64 108c-11 26 10 42 1 58"/>
+      </g>
+    </svg>
+    <span class="logo__words"><span class="logo__wordmark">VEIOS</span><span class="logo__sub">DE TIMÓTEO</span></span>
+  </a>
+  <nav class="navbar__links" id="navbar-links">
+    <a class="navbar__link" href="#historia" data-section="historia">A história</a>
+    <a class="navbar__link" href="#mapa" data-section="mapa">Mapa da rota</a>
+    <a class="navbar__link" href="#intervencoes" data-section="intervencoes">A intervenção</a>
+    <a class="btn btn--inverse btn--sm navbar__action" href="#mapa">Percorrer</a>
+  </nav>
+  <button class="navbar__menu-toggle" id="navbar-toggle" aria-label="Abrir menu" type="button">
+    <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+  </button>
 </header>
 
 <main>
 
-<section class="hero">
-  <div class="wrap">
-    <p class="olho">Timóteo · Minas Gerais · Vale do Aço</p>
-    <h1>O patrimônio de uma cidade construída pelo aço</h1>
-    <p>Igrejas, praças, uma estação de trem, um forno de tijolos, festas que atravessam gerações. Um circuito que reúne o que Timóteo reconhece — e o que ainda precisa reconhecer — como sua própria memória.</p>
-    <div class="numeros">
-      <div><b id="n-total">26</b><span>bens no mapa</span></div>
-      <div><b id="n-imaterial">4</b><span>imateriais</span></div>
-      <div><b id="n-reconhecido">4</b><span>reconhecidos</span></div>
-      <div><b>980<span style="font-size:.5em">m</span></b><span>ponto mais alto</span></div>
+<section class="hero" id="top">
+  <div class="hero__bg"><img src="assets/img/hero-bg.webp" alt="Vista aérea de Timóteo, entre o rio Piracicaba e as serras do Vale do Aço."></div>
+  <div class="hero__scrim-bottom"></div>
+  <div class="hero__scrim-side"></div>
+  <div class="hero__content">
+    <p class="eyebrow eyebrow--inverse">Patrimônio também se vive no caminho</p>
+    <a class="logo logo--lg logo--light" href="#top" aria-hidden="true" tabindex="-1">
+      <svg viewBox="0 0 84 200" width="66" height="156" aria-hidden="true" style="overflow:visible">
+        <g fill="none" stroke="var(--copper-300)" stroke-width="3.2" stroke-linecap="round">
+          <path d="M18 30C6 60 28 78 16 108c-11 28 11 44 1 62"/>
+          <path d="M42 26C28 60 54 76 40 110c-13 32 10 46 1 60"/>
+          <path d="M66 32C54 62 76 80 64 108c-11 26 10 42 1 58"/>
+        </g>
+      </svg>
+      <span class="logo__words"><span class="logo__wordmark">VEIOS</span><span class="logo__sub">DE TIMÓTEO</span></span>
+    </a>
+    <p class="hero__claim">Os caminhos que moldaram uma cidade.</p>
+    <p class="hero__lede">Uma rota urbana que conecta os principais patrimônios de Timóteo por meio de um elemento contínuo no espaço urbano: o Veio.</p>
+    <div class="hero__actions">
+      <a class="btn" href="#mapa">Percorrer a rota</a>
+      <a class="btn btn--inverse" href="#historia">A história</a>
     </div>
+  </div>
+  <div class="hero__divider">
+    <svg class="veio-divider veio-divider--light veio-divider--animate" viewBox="0 0 1200 72" preserveAspectRatio="none" width="100%" height="60" aria-hidden="true">
+      <path d="M0 44C90 44 130 10 226 10s136 52 240 52 150-52 254-52 142 42 236 42 154-32 244-32" stroke-width="2.4"/>
+    </svg>
   </div>
 </section>
 
-<section id="mapa-sec">
-  <div class="wrap">
-    <div class="cab">
-      <h2>O mapa do circuito</h2>
-      <p>Cada parada está numerada de norte a sul. Clique em um ponto do mapa — ou em uma ficha abaixo — para ler sobre ele.</p>
+<section class="historia" id="historia">
+  <div class="historia__intro">
+    <div class="historia__col">
+      <p class="eyebrow eyebrow--rule">Uma cidade formada por</p>
+      <h2 class="historia__heading">Território, trabalho e pessoas.</h2>
+      <p class="historia__p">Timóteo nasceu do encontro entre o seu território e a indústria. A chegada da Acesita, em 1944, transformou o antigo povoado em uma cidade, trazendo moradia, escola, lazer e fé.</p>
+      <p class="historia__p">A rota Veios de Timóteo convida você a percorrer esses caminhos e conhecer os patrimônios que contam essa história.</p>
+      <div class="historia__pillars" id="pillars"></div>
+    </div>
+    <div class="historia__figure"><img src="assets/img/historia-figure.webp" alt="Vista aérea da Igreja Matriz de São Sebastião, em Timóteo."></div>
+  </div>
+
+  <div class="historia__numbers">
+    <p class="eyebrow eyebrow--rule">Timóteo em números</p>
+    <div class="numbers-grid" id="numbers"></div>
+  </div>
+
+  <div class="historia__split">
+    <div class="historia__split-col">
+      <p class="eyebrow eyebrow--rule">Uma cidade moldada pela indústria</p>
+      <p class="historia__p">A história de Timóteo está profundamente ligada à industrialização do Vale do Aço. A fundação da Acesita, em 1944, marcou uma transformação importante no município, impulsionando a construção de moradias, escolas, espaços de convivência e infraestrutura para acompanhar o crescimento da população.</p>
+      <p class="historia__p">Essa influência pode ser percebida em diversos pontos da rota, como a Igreja São José, a antiga Escola Técnica de Metalurgia, a Fundação Aperam e outros espaços ligados à memória da cidade.</p>
+    </div>
+    <div class="historia__split-col">
+      <p class="eyebrow eyebrow--rule">Uma cidade além da indústria</p>
+      <p class="historia__p">Embora a siderurgia tenha sido fundamental para a formação de Timóteo, a identidade do município também é construída por sua religiosidade, cultura, arquitetura, educação, natureza e memória comunitária.</p>
+      <p class="historia__p">É justamente essa diversidade que a rota busca apresentar: uma cidade que cresceu com a indústria, mas que possui uma história muito maior do que ela.</p>
+    </div>
+  </div>
+
+  <div class="historia__timeline">
+    <p class="eyebrow eyebrow--rule">Os veios de Timóteo</p>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section class="rota" id="mapa">
+  <div class="rota__wrap">
+    <div class="rota__head">
+      <div>
+        <p class="eyebrow eyebrow--inverse">Mapa da rota</p>
+        <h2 class="rota__title">Acesse cada ponto e viva a cidade em diferentes épocas.</h2>
+      </div>
+      <div class="rota__meta">
+        <span class="rota__meta-label">25 PONTOS · CLIQUE PARA VER FOTOS E DETALHES</span>
+        <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--copper-300)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></svg>
+      </div>
     </div>
 
-    <div class="filtros" role="group" aria-label="Filtrar por categoria">
-      <button class="filtro" data-cat="imaterial" aria-pressed="true"><i></i>Imaterial</button>
-      <button class="filtro" data-cat="potencial" aria-pressed="true"><i></i>Material — potencial</button>
-      <button class="filtro" data-cat="reconhecido" aria-pressed="true"><i></i>Material — reconhecido</button>
-    </div>
-
-    <div class="mapa-grid">
-      <div id="mapa" role="application" aria-label="Mapa do circuito de patrimônio de Timóteo"></div>
-      <aside class="painel" id="painel">
-        <div class="painel-vazio">
-          <strong>Escolha uma parada</strong>
-          Clique em um pino do mapa para ver a foto, a descrição e o motivo de aquele bem integrar o circuito.
+    <div class="rota__grid">
+      <div class="rota__map-wrap">
+        <div id="rota-map">
+          <div id="rota-map-host" style="position:absolute;inset:0"></div>
+          <div class="map-zoom">
+            <button id="map-zoom-in" aria-label="Aproximar" type="button">+</button>
+            <button id="map-zoom-out" aria-label="Afastar" type="button">−</button>
+            <button id="map-zoom-reset" class="map-zoom__reset" aria-label="Ver toda a rota" type="button">ROTA</button>
+          </div>
         </div>
-      </aside>
+        <div class="rota__legend-plate">
+          <ul class="route-legend">
+            <li><span class="route-legend__line"></span><span>Trajeto da rota</span></li>
+            <li><span class="route-legend__pin"></span><span>Patrimônios</span></li>
+          </ul>
+        </div>
+      </div>
+      <aside class="rota__panel" id="rota-panel"></aside>
     </div>
   </div>
 </section>
 
-<section id="bens">
-  <div class="wrap">
-    <div class="cab">
-      <h2>Os bens do circuito</h2>
-      <p>Vinte e seis bens georreferenciados, em três categorias. Onde falta foto ou texto, o cartão diz exatamente o que falta.</p>
-    </div>
-    <div class="grade" id="grade"></div>
+<section class="intervencoes" id="intervencoes">
+  <div class="intervencoes__wrap">
+    <p class="eyebrow eyebrow--rule">A intervenção urbana</p>
+    <p class="intervencoes__note">Em desenvolvimento.</p>
   </div>
 </section>
 
-<section id="cidade">
-  <div class="wrap">
-    <div class="cab">
-      <h2>Timóteo em números</h2>
-      <p>Uma cidade de pouco mais de oitenta mil habitantes, adensada em 144 km² entre a serra e o rio Piracicaba. Os bens deste circuito estão distribuídos por esse território — e a maior parte deles existe por causa da usina que o organizou.</p>
+<section class="manifesto" id="manifesto">
+  <div class="manifesto__grid">
+    <div class="manifesto__figure"><img src="assets/img/manifesto-figure.webp" alt="Vista aérea do centro de Timóteo, com o Ginásio José York em primeiro plano."></div>
+    <div class="manifesto__body">
+      <blockquote class="quote">
+        <p>“Timóteo é feita de pessoas, de trabalho e de lugares que contam uma história em comum. O Veio é o que liga tudo isso.”</p>
+        <footer><span></span><span>Veios de Timóteo</span></footer>
+      </blockquote>
+      <svg class="veio-divider veio-divider--light" viewBox="0 0 1200 72" preserveAspectRatio="none" width="100%" height="48" aria-hidden="true">
+        <path d="M0 44C90 44 130 10 226 10s136 52 240 52 150-52 254-52 142 42 236 42 154-32 244-32" stroke-width="2.4"/>
+      </svg>
+      <div class="manifesto__lines">
+        <span>Preserve <span class="copper">o que nos forma.</span></span>
+        <span>Valorize <span class="copper">o que nos une.</span></span>
+        <span>Construa <span class="copper">o que vem.</span></span>
+      </div>
     </div>
-
-    <div class="ibge">
-      <div><b>81.579</b><span>População</span><em>Censo 2022</em></div>
-      <div><b>84.253</b><span>População estimada</span><em>2026</em></div>
-      <div><b>144,377</b><span>Área (km²)</span><em>2025</em></div>
-      <div><b>565,03</b><span>Densidade (hab/km²)</span><em>2022</em></div>
-      <div><b>0,770</b><span>IDHM</span><em>2010</em></div>
-      <div><b>56.987,61</b><span>PIB per capita (R$)</span><em>2023</em></div>
-      <div><b>99,3<span style="font-size:.6em">%</span></b><span>Escolarização 6 a 14 anos</span><em>2022</em></div>
-      <div><b>10,44</b><span>Mortalidade infantil (por mil)</span><em>2025</em></div>
-    </div>
-
-    <h3 class="sub">Contas públicas</h3>
-    <div class="ibge">
-      <div><b>546,1<span style="font-size:.5em"> mi</span></b><span>Receitas brutas realizadas (R$)</span><em>2025</em></div>
-      <div><b>474,9<span style="font-size:.5em"> mi</span></b><span>Despesas brutas empenhadas (R$)</span><em>2025</em></div>
-    </div>
-
-    <dl class="meta-cidade">
-      <div><dt>Gentílico</dt><dd>timotense</dd></div>
-      <div><dt>Código IBGE</dt><dd>3168705</dd></div>
-      <div><dt>Prefeito</dt><dd>Vitor Vicente do Prado <span>(2025)</span></dd></div>
-      <div><dt>Região</dt><dd>Região Metropolitana do Vale do Aço</dd></div>
-    </dl>
-
-    <p class="fonte">Fonte: IBGE — Cidades@, Panorama de Timóteo (MG). O ano de referência de cada indicador está indicado ao lado do valor.</p>
-  </div>
-</section>
-
-<section id="sobre">
-  <div class="wrap">
-    <div class="cab">
-      <h2>Sobre o circuito</h2>
-      <p>Trabalho da disciplina Estúdio Patrimônio e Planejamento Regional (Ap2), a partir do levantamento de campo do grupo e do mapa colaborativo “Circuito Patrimônios”.</p>
-    </div>
-    <p style="max-width:62ch;color:var(--tinta-2)">
-      O circuito distingue <strong>bens já reconhecidos oficialmente</strong> de <strong>propostas do estudo</strong> — a diferença está na cor de cada pino. A lista não é fechada: é um inventário vivo, pensado para crescer conforme novos bens forem identificados e documentados pela cidade.
-    </p>
-    <p style="max-width:62ch;color:var(--tinta-2);margin-top:14px">
-      Os textos de valor derivam do levantamento do Ap2. Bens sem fonte documental permanecem sem descrição, por decisão metodológica: em inventário de patrimônio, informação não verificada compromete o registro.
-    </p>
   </div>
 </section>
 
 </main>
 
-<footer>
-  <div class="wrap">
-    <p>Veios de Timóteo — Circuito de Patrimônio Material e Imaterial · Timóteo, Minas Gerais</p>
-    <p>Estúdio Patrimônio e Planejamento Regional · Ap2 · Entrega 19/10/2026</p>
-    <p>Mapa: OpenStreetMap · Fotografias do acervo do grupo</p>
+<footer class="site-footer" id="rodape">
+  <div class="site-footer__top">
+    <div class="site-footer__brand">
+      <span class="logo logo--md logo--light">
+        <svg viewBox="0 0 84 200" width="44" height="104" aria-hidden="true" style="overflow:visible">
+          <g fill="none" stroke="var(--copper-300)" stroke-width="3.2" stroke-linecap="round">
+            <path d="M18 30C6 60 28 78 16 108c-11 28 11 44 1 62"/>
+            <path d="M42 26C28 60 54 76 40 110c-13 32 10 46 1 60"/>
+            <path d="M66 32C54 62 76 80 64 108c-11 26 10 42 1 58"/>
+          </g>
+        </svg>
+        <span class="logo__words"><span class="logo__wordmark">VEIOS</span><span class="logo__sub">DE TIMÓTEO</span></span>
+      </span>
+      <p>Rota patrimonial urbana de Timóteo. Uma rota para sentir, conhecer e valorizar o que nos faz ser Timóteo.</p>
+    </div>
+    <div class="site-footer__visit">
+      <p class="eyebrow eyebrow--inverse">Visite</p>
+      <span>Timóteo · Capital do Inox<br>Minas Gerais, Brasil</span>
+      <a class="btn btn--inverse btn--sm" href="#mapa">Saiba mais sobre a rota <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+    </div>
+    <div class="site-footer__qr">
+      <svg class="icon" width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="var(--copper-300)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1"></rect><rect width="5" height="5" x="16" y="3" rx="1"></rect><rect width="5" height="5" x="3" y="16" rx="1"></rect><path d="M21 16h-3a2 2 0 0 0-2 2v3"></path><path d="M21 21v.01"></path><path d="M12 7v3a2 2 0 0 1-2 2H7"></path><path d="M3 12h.01"></path><path d="M12 3h.01"></path><path d="M12 16v.01"></path><path d="M16 12h1"></path><path d="M21 12v.01"></path><path d="M12 21v-1"></path></svg>
+      <span>SAIBA MAIS SOBRE A ROTA</span>
+    </div>
   </div>
+  <div class="site-footer__base">VEIOS DE TIMÓTEO · PATRIMÔNIO TAMBÉM SE VIVE NO CAMINHO</div>
 </footer>
 
 <script src="assets/vendor/leaflet/leaflet.js"></script>
-<script src="data/pontos.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="data/rota.js"></script>
+<script>
+/* Static blocks generated from window.PILARES / NUMEROS_TIMOTEO / the
+   HistoriaSection timeline — data straight from data/rota.js. */
+(function () {
+  var LINHA = [
+    { img: 'arq-rio', label: 'Território', text: 'Antes da indústria havia o rio, a terra e as primeiras ocupações.' },
+    { img: 'arq-industria', label: 'Indústria', text: 'A Acesita chega em 1944 e transforma o território em oportunidade.' },
+    { img: 'arq-comunidade', label: 'Comunidade', text: 'A cidade se forma com moradia, escola, lazer e fé.' },
+    { img: 'arq-memoria', label: 'Memória', text: 'Os patrimônios preservam as histórias e as pessoas.' },
+    { img: 'arq-inox', label: 'Futuro', text: 'O que nos conecta hoje também nos leva adiante.' }
+  ];
+
+  var pillars = document.getElementById('pillars');
+  window.PILARES.forEach(function (p) {
+    pillars.insertAdjacentHTML('beforeend',
+      '<div class="pillar"><span class="pillar__disc">' + window.icon(p.icon, { size: 22, stroke: 1.4, color: 'var(--paper-50)' }) + '</span>' +
+      '<div class="pillar__body"><p class="pillar__label">' + p.label + '</p><p class="pillar__desc">' + p.description + '</p></div></div>');
+  });
+
+  var numbers = document.getElementById('numbers');
+  window.NUMEROS_TIMOTEO.forEach(function (n) {
+    numbers.insertAdjacentHTML('beforeend',
+      '<div class="numbers-grid__card"><span class="numbers-grid__value">' + n.value + '</span><span class="numbers-grid__note">' + n.note + '</span></div>');
+  });
+
+  var timeline = document.getElementById('timeline');
+  LINHA.forEach(function (s, i) {
+    var connector = i < LINHA.length - 1
+      ? '<div class="timeline__connector"><svg class="veio-divider" viewBox="0 0 1200 72" preserveAspectRatio="none" width="100%" height="26" aria-hidden="true"><path d="M0 44C90 44 130 10 226 10s136 52 240 52 150-52 254-52 142 42 236 42 154-32 244-32" stroke-width="1.6"/></svg></div>'
+      : '';
+    timeline.insertAdjacentHTML('beforeend',
+      '<div class="timeline__step"><div class="timeline__img-wrap"><img class="timeline__img" src="assets/img/' + s.img + '.png" alt="">' + connector + '</div>' +
+      '<div><p class="timeline__label">' + s.label + '</p><p class="timeline__text">' + s.text + '</p></div></div>');
+  });
+})();
+</script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>

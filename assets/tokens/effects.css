@@ -1,0 +1,32 @@
+/* Veios de Timóteo — shadows, glows, gradients.
+   Institutional surfaces are flat and defined by hairlines, not shadows.
+   The only glow in the system belongs to the Veio: an LED line in metal. */
+:root{
+  --shadow-none:none;
+  --shadow-panel:0 1px 2px rgba(22,26,23,.04);
+  --shadow-card:0 1px 2px rgba(22,26,23,.05), 0 10px 28px -16px rgba(22,26,23,.12);
+  --shadow-raised:0 2px 6px rgba(22,26,23,.06), 0 20px 44px -22px rgba(22,26,23,.18);
+  --shadow-inset-hairline:inset 0 0 0 1px var(--line-hairline);
+
+  /* Copper glow — the illuminated Veio. Metal and lit edges only, never paper. */
+  --glow-veio-sm:0 0 8px rgba(210,156,113,.42);
+  --glow-veio-md:0 0 16px rgba(210,156,113,.52), 0 0 2px rgba(251,243,236,.9);
+  --glow-veio-lg:0 0 40px rgba(189,127,79,.42), 0 0 12px rgba(210,156,113,.58);
+
+  /* Protection gradients for text over photography */
+  --scrim-bottom:linear-gradient(to top, rgba(18,32,24,.90) 0%, rgba(18,32,24,.58) 38%, rgba(18,32,24,0) 78%); /* @kind other */
+  --scrim-top:linear-gradient(to bottom, rgba(18,32,24,.72) 0%, rgba(18,32,24,0) 60%); /* @kind other */
+  --scrim-side:linear-gradient(to right, rgba(18,32,24,.82) 0%, rgba(18,32,24,0) 62%); /* @kind other */
+
+  /* Metal fills — corten totem face and the polished route strip */
+  --fill-corten:linear-gradient(103deg,#5E3A23 0%,#845335 42%,#9E6238 63%,#5A3620 100%); /* @kind other */
+  --fill-veio-strip:linear-gradient(90deg,#744527 0%,#D29C71 46%,#F2DFCE 52%,#BD7F4F 60%,#744527 100%); /* @kind other */
+
+  /* Glass: controls floating over map or photography only */
+  --blur-glass:saturate(130%) blur(14px); /* @kind other */
+  --glass-light:rgba(255,255,255,.86);
+  --glass-dark:rgba(18,32,24,.66);
+
+  --opacity-disabled:.42; /* @kind other */
+  --opacity-hover-veil:.86; /* @kind other */
+}

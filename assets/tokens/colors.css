@@ -1,0 +1,96 @@
+/* Veios de Timóteo — color system.
+   The brand is institutional first: deep heritage green and white paper carry
+   every surface. Copper is reserved for the Veio itself — the metal line, the
+   route, the totems, the lit edges — and never used as a general-purpose UI
+   accent. Ratio to hold: roughly 70% white/paper, 25% green, 5% copper. */
+:root{
+  /* --- Green / institutional (primary) --- */
+  --green-50:#F1F5F2;
+  --green-100:#DFE8E1;
+  --green-200:#BFD0C4;
+  --green-300:#8FA997;
+  --green-400:#5C7B66;
+  --green-500:#3E5E49;
+  --green-600:#2F4B39;
+  --green-700:#24382D;
+  --green-800:#1B2B22;
+  --green-900:#122018;
+
+
+  /* --- Paper / white (the dominant ground) --- */
+  --paper-0:#FFFFFF;
+  --paper-50:#FAFAF8;
+  --paper-100:#F4F4F1;
+  --paper-200:#E8E9E4;
+  --paper-300:#D6D8D1;
+  --paper-400:#B4B8B1;
+
+
+  /* --- Copper / Veio (accent only: the illuminated metal strip) --- */
+  --copper-50:#FBF3EC;
+  --copper-100:#F2DFCE;
+  --copper-200:#E3C2A4;
+  --copper-300:#D29C71;
+  --copper-400:#BD7F4F;
+  --copper-500:#A96A3D;
+  --copper-600:#8E5430;
+  --copper-700:#744527;
+  --copper-800:#55311B;
+  --copper-900:#382011;
+
+  /* --- Corten (weathered steel of the totems; used as fill, not flat UI) --- */
+  --corten-300:#B98A69;
+  --corten-500:#845335;
+  --corten-700:#5E3A23;
+
+  /* --- Ink (cool graphite, never pure black) --- */
+  --ink-900:#161A17;
+  --ink-800:#232924;
+  --ink-700:#333A35;
+  --ink-600:#4C544E;
+  --ink-500:#6A736C;
+  --ink-400:#8E968F;
+  --ink-300:#B4BAB5;
+
+  /* --- Semantic surfaces --- */
+  --surface-page:var(--paper-0);
+  --surface-raised:var(--paper-0);
+  --surface-sunken:var(--paper-100);
+  --surface-card:var(--paper-0);
+  --surface-tint:var(--green-50);
+  --surface-inverse:var(--green-800);
+  --surface-inverse-raised:var(--green-700);
+  --surface-metal:var(--corten-700);
+
+  /* --- Semantic text --- */
+  --text-display:var(--ink-900);
+  --text-heading:var(--green-800);
+  --text-body:var(--ink-700);
+  --text-muted:var(--ink-500);
+  --text-accent:var(--green-600);
+  --text-veio:var(--copper-600);
+  --text-on-inverse:#F2F5F2;
+  --text-on-inverse-muted:#A8BCAE;
+  --text-on-accent:#FFFFFF;
+
+  /* --- Semantic lines --- */
+  --line-hairline:#E2E4DF;
+  --line-strong:var(--paper-400);
+  --line-accent:var(--green-500);
+  --line-veio:var(--copper-500);
+  --line-on-inverse:#33503F;
+
+  /* --- Interactive (green, not copper) --- */
+  --action-primary:var(--green-600);
+  --action-primary-hover:var(--green-700);
+  --action-primary-press:var(--green-800);
+  --action-secondary-border:var(--paper-400);
+  --action-focus-ring:var(--green-400);
+
+  /* --- Map (the route layer) --- */
+  --map-plate:#16241C;
+  --map-route:var(--copper-400);
+  --map-route-inactive:var(--paper-200);
+  --map-pin:var(--green-800);
+  --map-pin-active:var(--copper-400);
+}

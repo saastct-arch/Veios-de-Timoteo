@@ -1,0 +1,22 @@
+/* Veios de Timóteo — motion.
+   The reference behaviour is a walking pace: slow, continuous, never bouncy.
+   Lines draw themselves; panels fade and rise a few pixels; nothing overshoots. */
+:root{
+  --ease-standard:cubic-bezier(.22,.61,.36,1); /* @kind other */
+  --ease-out-soft:cubic-bezier(.16,1,.3,1); /* @kind other */
+  --ease-in-out-walk:cubic-bezier(.45,.05,.55,.95); /* @kind other */
+
+  --duration-instant:90ms; /* @kind other */
+  --duration-fast:160ms; /* @kind other */
+  --duration-normal:260ms; /* @kind other */
+  --duration-slow:460ms; /* @kind other */
+  --duration-reveal:900ms; /* @kind other */
+  --duration-draw:2400ms; /* @kind other */
+
+  --transition-control:all var(--duration-fast) var(--ease-standard); /* @kind other */
+  --transition-surface:all var(--duration-normal) var(--ease-out-soft); /* @kind other */
+  --transition-reveal:opacity var(--duration-reveal) var(--ease-out-soft), transform var(--duration-reveal) var(--ease-out-soft); /* @kind other */
+
+  --lift-hover:-2px; /* @kind other */
+  --press-scale:.985; /* @kind other */
+}

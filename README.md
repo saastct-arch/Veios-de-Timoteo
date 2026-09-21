@@ -1,7 +1,6 @@
-# Veios de Timóteo — Circuito de Patrimônio
+# Veios de Timóteo
 
-Site do circuito de patrimônio material e imaterial de Timóteo (MG).
-Trabalho da disciplina **Estúdio Patrimônio e Planejamento Regional** — Ap2. Entrega: **19/10/2026**.
+Rota patrimonial urbana de Timóteo (MG). Site estático que implementa, em HTML/CSS/JS puro, o design entregue pelo Claude Design ("Site Veios de Timóteo — handoff").
 
 ## Como rodar
 
@@ -12,116 +11,67 @@ python3 -m http.server 8000
 # abra http://localhost:8000
 ```
 
-Abrir o `index.html` direto pelo `file://` não funciona — o navegador bloqueia o carregamento de `data/pontos.js`.
+Abrir `index.html` direto pelo `file://` não funciona — o navegador bloqueia o carregamento de `data/rota.js`.
+
+## Origem do conteúdo
+
+Este site substitui uma versão anterior baseada no KML do My Maps. A versão atual segue **o handoff de design entregue** (`Veios de Timóteo — Site.dc.html` + componentes), que por sua vez já veio com dados mais completos:
+
+- **25 pontos numerados** (28 entradas — alguns números cobrem duas entradas na mesma parada, ex.: Praça do Coreto/Carnaval Tradicional dividem a parada 4), com coordenadas extraídas de um `.gpx` real (rota otimizada, não estimada).
+- Texto curto, texto longo e links "para saber mais" por ponto, pesquisados em fontes públicas (ipatrimônio, Wikipédia, Aperam, prefeitura e câmara de Timóteo, imprensa regional).
+- Tempo e distância de carro até a próxima parada, por trecho.
+- Uma seção "Timóteo em números" com 6 indicadores (população, área, densidade, PIB per capita, fundação da Acesita, altitude do Pico do Ana Moura).
 
 ## Estrutura
 
 ```
-index.html                  página única
-data/pontos.js              os 26 bens georreferenciados
-assets/css/styles.css       tokens do design system "Veios de Timóteo"
-assets/js/app.js            mapa, rota, filtros e painel de detalhe
-assets/img/                 19 fotografias do acervo do grupo
-assets/vendor/leaflet/      Leaflet 1.9.4 (local, sem CDN)
+index.html                       página única
+data/rota.js                     window.ROTA / PILARES / NUMEROS_TIMOTEO — do handoff, sem alterações
+assets/tokens/                   tokens do design system "Veios de Timóteo" (cores, tipografia, espaçamento,
+                                  efeitos, motion) — copiados do bundle, sem alterações
+assets/css/site.css              estilos do site, construídos sobre os tokens acima
+assets/js/app.js                 NavBar (troca de tom no scroll) + mapa da rota (Leaflet) + painel de detalhe
+assets/js/icons.js               ícones Lucide usados (subconjunto do design system)
+assets/img/                      fotografias (ver abaixo)
+assets/vendor/leaflet/           Leaflet 1.9.4 (local, sem CDN)
 ```
 
-## Como adicionar ou editar um bem
+## Fotografias
 
-Tudo vive em `data/pontos.js`. Cada ponto:
+O handoff trouxe as imagens **do próprio site** (capa, figura da seção "A história", figura do manifesto) e as 5 fotos circulares da linha do tempo — todas usadas como vieram, sem edição.
 
-```js
-{
- "n": 12,                                  // número da parada na rota
- "id": "igreja-sao-jose",                  // usado como âncora
- "nome": "Igreja São José",
- "cat": "potencial",                       // imaterial | potencial | reconhecido
- "lat": -19.549258, "lng": -42.6447167,
- "foto": "Igreja São José.jpg",            // nome do arquivo em assets/img/ — ou null
- "endereco": "",
- "resumo": "Um dos espaços de fé...",      // 2-3 linhas, linguagem de visitante
- "porque": ["...", "..."],                 // por que é patrimônio
- "tags": ["histórico", "religioso"],
- "fontes": [{"t": "Título da fonte", "u": "https://..."}],   // u vazio = fonte offline
- "pendente": false                         // true = sem texto de valor levantado
-}
-```
+Os **26 slots de imagem por ponto da rota** (imagem principal + 4 extras) vieram vazios no design — o time ainda não tinha fotos quando fez o mockup. Preenchi o slot principal em **18 dos 25 pontos** com fotografias reais já levantadas em campo numa rodada anterior, casando por nome exato de assunto (mesma igreja, mesma praça, mesmo prédio) — nenhuma foto foi adivinhada ou usada para um lugar diferente do que mostra. A tabela de correspondência está em `assets/js/app.js` (objeto `FOTOS`). Os 7 pontos sem foto — e as 4 imagens extras de cada um dos 25 — continuam marcados **"Imagem a ser inserida"**, exatamente como o design deixou.
 
-A ordem da rota é o campo `n`, hoje de norte a sul. Para reordenar, altere `n` — o mapa, a linha
-da rota e a grade seguem esse número.
+**Sem foto ainda:** 1º Cartório de Notas · Escritório Central da Aperam · Fundação Aperam (prédio) · Igreja do Ana Moura · Praça do Coliseu · Sede da Prefeitura · Chafariz e Olho-D'Água (Biquinha) · Centro de Vivência Trajano Quirino Bicalho · Escola Municipal Virgínia de Souza Reis · E.E. João Cotta de Figueiredo Barcelos.
 
-### Marcações de pendência
+## Duas pequenas completudes além do design
 
-O site mostra o que falta, em vez de esconder:
+O handoff é um protótipo ("recrie com fidelidade visual, não copie a estrutura interna"). Duas peças ficaram deliberadamente inacabadas no mockup e completei por usabilidade mínima, sem alterar nada visual:
 
-- **sem `foto`** → o cartão exibe o aviso `FALTA FOTOGRAFIA` com o número e o nome da parada;
-- **`pendente: true`** → a ficha exibe `TEXTO PENDENTE`.
+1. **Menu mobile.** O botão de menu do NavBar existia no design mas ficava sempre oculto (`display:none`), e os links do menu não quebram linha — em telas estreitas eles simplesmente sairiam da tela. Adicionei um menu suspenso funcional abaixo de 780px, reaproveitando o mesmo botão.
+2. **Botão "Saiba mais sobre a rota" no rodapé.** No design não tinha destino (`onClick`/`href` ausentes). Apontei para `#mapa`, a leitura óbvia do próprio texto do botão.
 
-## Estado do conteúdo
+Nada de conteúdo, cor, tipografia ou layout foi alterado em relação ao handoff.
 
-| | |
-|---|---|
-| Bens no mapa | 26 |
-| Com fotografia | 18 |
-| **Sem fotografia** | **8** |
-| Com texto de valor | 26 |
-| Com fonte citada | 26 |
-| Não pinados no My Maps | 13 |
+## Seção "A intervenção urbana"
 
-
-### Falta fotografar
-
-1º Cartório de Notas de Timóteo · Escola Municipal Virgínia de Souza Reis ·
-Escritório Central da Aperam · Praça do Coliseu · Igreja do Ana Moura ·
-Sede da Prefeitura de Timóteo · Centro de Vivência Trajano Quirino Bicalho ·
-Chafariz e Olho d'Água — Biquinha
-
-Horizontal, mínimo 1600px, luz da manhã ou fim de tarde, fachada inteira de frente.
-Anotar o crédito de cada foto. Rostos identificáveis exigem autorização de uso de imagem.
-
-### Procedência dos textos
-
-Todos os 26 bens têm texto de valor e fonte citada, visível no rodapé de cada ficha.
-
-- **11 bens** — levantamento de campo do grupo (Ap2).
-- **15 bens** — pesquisa documental em fontes públicas: ipatrimônio, Prefeitura e Câmara
-  de Timóteo, Wikipédia, Aperam, Enciclopédia Itaú Cultural e imprensa regional.
-
-Cada ficha lista suas fontes com link. Nenhum dado foi afirmado sem origem verificável.
-
-### Bens ainda não pinados no My Maps
-
-Não aparecem no site — entram assim que ganharem coordenada no My Maps:
-
-Fundação Acesita (antiga Casa de Hóspedes) · Colégio Macedo Soares ·
-Antigo Clube dos Operários (Associação dos Aposentados) · Bica das Bromélias ·
-Sede da Fazenda Boa Vista · Biquinha · Conjunto Residencial do Bairro Alphaville ·
-Conjunto Residencial do Bairro Recanto Verde · Fazenda dos Maia ·
-Escola Municipal Infantil Ana Moura · Escola Estadual João Cotta de Figueiredo Barcelos ·
-Antiga tubulação de água do Morro Bela Vista · Praça 29 de Abril
-
-Dois registros do KML foram descartados por não trazerem informação alguma: uma entrada
-chamada apenas "Residência" e uma duplicata do Centro de Vivência.
-
-### Dados do IBGE
-
-Preenchidos na seção "Timóteo em números", com o ano de referência ao lado de cada
-indicador. Fonte: IBGE Cidades@ — Panorama de Timóteo (MG). Código do município: **3168705**.
+O próprio design deixa essa seção como `Em desenvolvimento.` — é assim que está aqui também. O bundle de design (`assets/tokens/design-system-readme.md`) descreve o conceito completo (totens em aço corten, bancos interativos, linha do tempo no piso, iluminação cênica), mas essa seção do site ainda não foi desenhada.
 
 ## Design system
 
-Tokens extraídos do bundle **Veios de Timóteo — Rota Patrimonial**:
+Tokens do bundle **Veios de Timóteo**, copiados sem alteração em `assets/tokens/`:
 
-- **Marcellus** (títulos) · **Archivo** (texto) · **IBM Plex Mono** (rótulos)
-- Verdes `#122018 → #3E5E49`, fundo `#1B2B22`
-- Cobre `#5E3A23 → #F2DFCE`, acento `#D29C71`
+- **Marcellus** (títulos monumentais) · **Source Serif 4** (corpo de texto) · **Archivo** (rótulos, navegação, botões) · **IBM Plex Mono** (não usado nesta página, reservado pelo sistema)
+- Verde institucional `#122018 → #F1F5F2`, base do site (70% do layout)
+- Cobre — **só o Veio**: a linha da rota no mapa, os números das paradas, o divisor animado (25%→5% do layout, nunca em botão ou link)
+- Proporção de cor pretendida pelo sistema: 70% papel/branco, 25% verde, 5% cobre
 
-Cores das categorias no mapa: imaterial `#BD7F4F` · potencial `#7FA98C` · reconhecido `#E3C2A4`.
+Ver `assets/tokens/design-system-readme.md` para os fundamentos completos de voz, tipografia e cor.
 
 ## Publicação
 
-Site estático — publica direto na Vercel sem configuração.
+Site estático — publica direto na Vercel ou GitHub Pages sem configuração.
 
 ## Créditos
 
-Mapa © colaboradores do [OpenStreetMap](https://www.openstreetmap.org/copyright).
-Fotografias do acervo do grupo.
+Mapa © colaboradores do [OpenStreetMap](https://www.openstreetmap.org/copyright). Fotografias de capa, história e manifesto do acervo do design. Fotografias dos pontos da rota do acervo de campo do grupo.
