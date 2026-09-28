@@ -1,8 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#1B2B22"/>
-  <g transform="translate(58,0)" fill="none" stroke="#D29C71" stroke-width="9" stroke-linecap="round">
-    <path d="M18 30C6 60 28 78 16 108c-11 28 11 44 1 62"/>
-    <path d="M42 26C28 60 54 76 40 110c-13 32 10 46 1 60"/>
-    <path d="M66 32C54 62 76 80 64 108c-11 26 10 42 1 58"/>
+  <defs>
+    <clipPath id="circle"><circle cx="100" cy="100" r="100"/></clipPath>
+  </defs>
+  <g clip-path="url(#circle)">
+    <rect width="200" height="200" fill="#1B2B22"/>
+    <g transform="translate(16,-100) scale(2)" fill="none" stroke="#D29C71" stroke-width="7.5" stroke-linecap="round">
+      <path d="M18 30C6 60 28 78 16 108c-11 28 11 44 1 62"/>
+      <path d="M42 26C28 60 54 76 40 110c-13 32 10 46 1 60"/>
+      <path d="M66 32C54 62 76 80 64 108c-11 26 10 42 1 58"/>
+    </g>
   </g>
 </svg>
