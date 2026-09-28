@@ -90,6 +90,15 @@ Ver `assets/tokens/design-system-readme.md` para os fundamentos completos de voz
 
 Site estático — publica direto na Vercel ou GitHub Pages sem configuração.
 
+## Ícone da aba e prévia de link
+
+`assets/icons/` — gerados a partir do próprio mark do Logo (as três linhas onduladas), não do handoff:
+
+- **Ícone da aba** (favicon): o mark sozinho, cor cobre (`#D29C71`) sobre o verde institucional (`#1B2B22`). SVG como formato principal (`favicon.svg`, nítido em qualquer tamanho), com `.ico`/PNG em 16/32/48/180px como fallback para navegadores que não leem favicon em SVG.
+- **Prévia de link** (Open Graph/Twitter, `og-image.png`, 1200×630): a logo completa — mark + "VEIOS DE TIMÓTEO" — centralizada sobre o mesmo verde, com o eyebrow do Hero ("Patrimônio também se vive no caminho") como assinatura.
+
+**Pendência:** `og:image`, `twitter:image` e `og:url` em `index.html` estão com caminho relativo (`/assets/icons/og-image.png`). O protocolo Open Graph pede URL absoluta — funciona na maioria dos crawlers modernos, mas alguns (principalmente o do WhatsApp) ignoram caminho relativo. Assim que o site tiver domínio fixo (Vercel ou outro), trocar essas três linhas pela URL completa, ex. `https://veios-de-timoteo.vercel.app/assets/icons/og-image.png`.
+
 ## Créditos
 
 Mapa © colaboradores do [OpenStreetMap](https://www.openstreetmap.org/copyright). Fotografias de capa, história e manifesto do acervo do design. Fotografias dos pontos da rota do acervo de campo do grupo.
