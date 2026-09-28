@@ -159,5 +159,21 @@ window.NUMEROS_TIMOTEO = [
   { value: '565 hab./km²', label: 'densidade demográfica', note: 'Densidade demográfica registrada no Censo 2022.' },
   { value: 'R$ 56,9 mil', label: 'PIB per capita', note: 'PIB per capita de Timóteo em 2023.' },
   { value: '1944', label: 'fundação da Acesita', note: 'Ano de fundação da Acesita, empresa que marcou a industrialização e o desenvolvimento de Timóteo.' },
-  { value: '864 m', label: 'Pico do Ana Moura', note: 'Altitude aproximada do Pico do Ana Moura, ponto mais alto do município.' },
+];
+
+/* Thematic sub-routes — curated subsets of window.ROTA, in visiting order.
+   'all' (Rota Principal) is synthesized in RotaSection from the full list. */
+window.ROTAS_TEMATICAS = [
+  { id: 'memoria', label: 'Memória', icon: 'landmark',
+    pointIds: ['cartorio', 'casa-memoria-legislativo', 'prefeitura', 'estatua-drummond', 'centro-vivencia'] },
+  { id: 'fe', label: 'Fé', icon: 'church',
+    pointIds: ['igreja-sao-jose', 'igreja-ana-moura', 'igreja-sao-sebastiao', 'tapetes-corpus-christi'] },
+  { id: 'cultura', label: 'Cultura', icon: 'users',
+    pointIds: ['carnaval', 'feira-timirim', 'cantata-natal'] },
+  { id: 'industrializacao', label: 'Industrialização', icon: 'factory',
+    pointIds: ['fundacao-aperam', 'aperam-escritorio', 'forno-hoffmann', 'escola-metalurgia', 'ponte-maua', 'estacao'] },
+  { id: 'lazer', label: 'Lazer', icon: 'trees',
+    pointIds: ['oikos', 'feira-timirim', 'praca-coliseu', 'carnaval', 'praca-coreto', 'ginasio-jose-york', 'pico-ana-moura', 'biquinha'] },
+  { id: 'educacao', label: 'Educação', icon: 'graduation-cap',
+    pointIds: ['escola-virginia-reis', 'ee-joao-cotta', 'ee-getulio-vargas', 'ee-percival-farquhar'] },
 ];

@@ -77,9 +77,14 @@
     <div class="historia__col">
       <p class="eyebrow eyebrow--rule">Uma cidade formada por</p>
       <h2 class="historia__heading">Território, trabalho e pessoas.</h2>
-      <p class="historia__p">Timóteo nasceu do encontro entre o seu território e a indústria. A chegada da Acesita, em 1944, transformou o antigo povoado em uma cidade, trazendo moradia, escola, lazer e fé.</p>
-      <p class="historia__p">A rota Veios de Timóteo convida você a percorrer esses caminhos e conhecer os patrimônios que contam essa história.</p>
-      <div class="historia__pillars" id="pillars"></div>
+      <p class="historia__p">A história de Timóteo está diretamente ligada à formação do Vale do Aço e às transformações que marcaram o desenvolvimento da região. Antes da consolidação do município, o território era habitado por povos indígenas e, posteriormente, passou por um processo de ocupação relacionado à agricultura, à pecuária e à formação dos primeiros povoados.</p>
+      <p class="historia__p">O nome Timóteo está associado à antiga Paragem do Ribeirão do Timóteo e, segundo registros históricos, faz referência a Manoel Timóteo, considerado um dos primeiros moradores e comerciantes da região.</p>
+      <div class="historia__inline-figure"><img src="assets/img/historia-figure-2.webp" alt="Monumento da Paragem do Ribeirão do Timóteo, em praça arborizada."></div>
+      <p class="historia__p">A grande transformação da cidade aconteceu a partir da década de 1940, com a implantação da Companhia Aços Especiais Itabira – Acesita. A chegada da siderúrgica impulsionou o crescimento populacional e urbano, atraindo trabalhadores e promovendo a construção de bairros, escolas, equipamentos públicos e novas infraestruturas. A indústria tornou-se parte fundamental da identidade local e ajudou a consolidar Timóteo como uma das cidades que formam o Vale do Aço.</p>
+      <p class="historia__p">Após pertencer administrativamente a Antônio Dias e, posteriormente, a Coronel Fabriciano, Timóteo conquistou sua autonomia político-administrativa na década de 1960, iniciando uma nova etapa de desenvolvimento.</p>
+      <div class="historia__inline-figure"><img src="assets/img/historia-figure-3.webp" alt="Vista aérea da Igreja Matriz de São Sebastião e do entorno urbano de Timóteo."></div>
+      <p class="historia__p">Ao longo do tempo, a cidade construiu uma identidade marcada pela relação entre indústria, trabalho, cultura, natureza e memória. Edificações históricas, espaços públicos, manifestações culturais e tradições preservam diferentes momentos dessa trajetória e revelam os caminhos percorridos pela população na construção da cidade.</p>
+      <p class="historia__p">Conhecer Timóteo é, portanto, conhecer os veios de sua história: marcas do passado que permanecem presentes no território, na arquitetura, na cultura e na memória de sua gente, conectando as origens da cidade ao seu presente e às próximas gerações.</p>
     </div>
     <div class="historia__figure"><img src="assets/img/historia-figure.webp" alt="Vista aérea da Igreja Matriz de São Sebastião, em Timóteo."></div>
   </div>
@@ -101,11 +106,6 @@
       <p class="historia__p">É justamente essa diversidade que a rota busca apresentar: uma cidade que cresceu com a indústria, mas que possui uma história muito maior do que ela.</p>
     </div>
   </div>
-
-  <div class="historia__timeline">
-    <p class="eyebrow eyebrow--rule">Os veios de Timóteo</p>
-    <div class="timeline" id="timeline"></div>
-  </div>
 </section>
 
 <section class="rota" id="mapa">
@@ -116,10 +116,12 @@
         <h2 class="rota__title">Acesse cada ponto e viva a cidade em diferentes épocas.</h2>
       </div>
       <div class="rota__meta">
-        <span class="rota__meta-label">25 PONTOS · CLIQUE PARA VER FOTOS E DETALHES</span>
+        <span class="rota__meta-label"><span id="rota-count">25</span> PONTOS · CLIQUE PARA VER FOTOS E DETALHES</span>
         <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--copper-300)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></svg>
       </div>
     </div>
+
+    <div class="rota__pills" id="rota-pills" role="group" aria-label="Escolher roteiro temático"></div>
 
     <div class="rota__grid">
       <div class="rota__map-wrap">
@@ -204,38 +206,14 @@
 <script src="assets/js/icons.js"></script>
 <script src="data/rota.js"></script>
 <script>
-/* Static blocks generated from window.PILARES / NUMEROS_TIMOTEO / the
-   HistoriaSection timeline — data straight from data/rota.js. */
+/* Static block generated from window.NUMEROS_TIMOTEO — data straight from
+   data/rota.js. (The pillar grid and "Os veios de Timóteo" timeline that
+   used to live here were removed from HistoriaSection.jsx upstream.) */
 (function () {
-  var LINHA = [
-    { img: 'arq-rio', label: 'Território', text: 'Antes da indústria havia o rio, a terra e as primeiras ocupações.' },
-    { img: 'arq-industria', label: 'Indústria', text: 'A Acesita chega em 1944 e transforma o território em oportunidade.' },
-    { img: 'arq-comunidade', label: 'Comunidade', text: 'A cidade se forma com moradia, escola, lazer e fé.' },
-    { img: 'arq-memoria', label: 'Memória', text: 'Os patrimônios preservam as histórias e as pessoas.' },
-    { img: 'arq-inox', label: 'Futuro', text: 'O que nos conecta hoje também nos leva adiante.' }
-  ];
-
-  var pillars = document.getElementById('pillars');
-  window.PILARES.forEach(function (p) {
-    pillars.insertAdjacentHTML('beforeend',
-      '<div class="pillar"><span class="pillar__disc">' + window.icon(p.icon, { size: 22, stroke: 1.4, color: 'var(--paper-50)' }) + '</span>' +
-      '<div class="pillar__body"><p class="pillar__label">' + p.label + '</p><p class="pillar__desc">' + p.description + '</p></div></div>');
-  });
-
   var numbers = document.getElementById('numbers');
   window.NUMEROS_TIMOTEO.forEach(function (n) {
     numbers.insertAdjacentHTML('beforeend',
       '<div class="numbers-grid__card"><span class="numbers-grid__value">' + n.value + '</span><span class="numbers-grid__note">' + n.note + '</span></div>');
-  });
-
-  var timeline = document.getElementById('timeline');
-  LINHA.forEach(function (s, i) {
-    var connector = i < LINHA.length - 1
-      ? '<div class="timeline__connector"><svg class="veio-divider" viewBox="0 0 1200 72" preserveAspectRatio="none" width="100%" height="26" aria-hidden="true"><path d="M0 44C90 44 130 10 226 10s136 52 240 52 150-52 254-52 142 42 236 42 154-32 244-32" stroke-width="1.6"/></svg></div>'
-      : '';
-    timeline.insertAdjacentHTML('beforeend',
-      '<div class="timeline__step"><div class="timeline__img-wrap"><img class="timeline__img" src="assets/img/' + s.img + '.png" alt="">' + connector + '</div>' +
-      '<div><p class="timeline__label">' + s.label + '</p><p class="timeline__text">' + s.text + '</p></div></div>');
   });
 })();
 </script>
