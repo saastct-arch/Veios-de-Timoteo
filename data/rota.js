@@ -216,26 +216,73 @@ window.FOTOS = {
     { src: 'assets/img/estacao-mario-carvalho-4.webp', w: 515, h: 388, alt: 'Acesso à estação, com a cobertura de concreto entre árvores.' },
     { src: 'assets/img/estacao-mario-carvalho-5.webp', w: 500, h: 326, alt: 'Passageiros na plataforma ao lado do trem de passageiros da Vitória a Minas.', credit: 'Becam Produções' }
   ],
-  /* 'igreja-sao-jose' has no photo on purpose: the domed church in the old
-     field photo is the Igreja Católica São José, a different building from
-     the 1947 chapel this point describes (confirmed by the project team). */
   'tapetes-corpus-christi': [{ src: 'assets/img/tapetes-corpus-christi.jpg', w: 900, h: 881, alt: 'Moradores confeccionam um tapete de serragem colorida na rua para a celebração de Corpus Christi.' }],
-  'praca-coreto': [{ src: 'assets/img/praca-coreto.jpg', w: 246, h: 164, alt: 'Vista aérea da Praça do Coreto, arborizada, com caminhos e área central.' }],
-  'carnaval': [{ src: 'assets/img/carnaval.jpg', w: 246, h: 164, alt: 'Desfile noturno de carnaval, com carro alegórico e público ocupando a rua.' }],
   'ginasio-jose-york': [{ src: 'assets/img/ginasio-jose-york.jpg', w: 738, h: 414, alt: 'Vista aérea do Ginásio Poliesportivo José York, edifício circular à margem de uma avenida.' }],
   /* Same file as the Cantata: the event is staged on this building's
      façade, so the photo genuinely shows the Fundação's historic seat. */
   'fundacao-aperam': [{ src: 'assets/img/cantata-natal.jpg', w: 597, h: 335, alt: 'Fachada do prédio histórico da Fundação Aperam, iluminada durante a Cantata de Natal.' }],
   'cantata-natal': [{ src: 'assets/img/cantata-natal.jpg', w: 597, h: 335, alt: 'Fachada da Fundação Aperam iluminada para a Cantata de Natal, entre palmeiras e fogos de artifício.' }],
-  'escola-metalurgia': [{ src: 'assets/img/escola-metalurgia.jpg', w: 246, h: 164, alt: 'Prédio da antiga Escola Técnica de Metalurgia, com a placa do CEFET-MG em primeiro plano.' }],
-  'ee-percival-farquhar': [{ src: 'assets/img/ee-percival-farquhar.jpg', w: 246, h: 168, alt: 'Fotografia de grupo de estudantes diante dos arcos de tijolo maciço da escola.' }],
   'pico-ana-moura': [{ src: 'assets/img/pico-ana-moura.jpg', w: 515, h: 388, alt: 'Paredão rochoso do Pico do Ana Moura com antenas no topo.' }],
-  'ee-getulio-vargas': [{ src: 'assets/img/ee-getulio-vargas.jpg', w: 246, h: 164, alt: 'Prédio térreo da E.E. Getúlio Vargas, com escadaria e gramado à frente.' }],
   'estatua-drummond': [{ src: 'assets/img/estatua-drummond.jpg', w: 512, h: 599, alt: 'Estátua de bronze de Carlos Drummond de Andrade sentado em um banco.' }],
   'feira-timirim': [{ src: 'assets/img/feira-timirim.jpg', w: 515, h: 388, alt: 'Bancas de hortaliças e frequentadores sob a cobertura da Feira do Timirim.' }],
   'casa-memoria-legislativo': [{ src: 'assets/img/casa-memoria-legislativo.jpg', w: 246, h: 164, alt: 'Casarão térreo branco de janelas verdes que abriga a Casa de Memória e Pesquisa do Legislativo.' }],
   'igreja-sao-sebastiao': [{ src: 'assets/img/igreja-sao-sebastiao.jpg', w: 194, h: 259, alt: 'Torre de tijolos da Igreja Matriz de São Sebastião e a escadaria de acesso.' }],
   'oikos': [{ src: 'assets/img/oikos.jpg', w: 515, h: 388, alt: 'Visitantes em alameda arborizada do Oikós.' }],
   'forno-hoffmann': [{ src: 'assets/img/forno-hoffmann.jpg', w: 515, h: 388, alt: 'Chaminé e estrutura de tijolos do Forno Hoffmann, com escadaria à frente.' }],
-  'ponte-maua': [{ src: 'assets/img/ponte-maua.jpg', w: 567, h: 352, alt: 'Ponte Mauá, em arco de concreto, sobre trecho pedregoso do rio.', credit: 'Diário do Aço' }]
+  'ponte-maua': [{ src: 'assets/img/ponte-maua.jpg', w: 567, h: 352, alt: 'Ponte Mauá, em arco de concreto, sobre trecho pedregoso do rio.', credit: 'Diário do Aço' }],
+  /* Photos supplied by the project team (licences confirmed), 10/2026. */
+  'cartorio': [{ src: 'assets/img/cartorio.jpg', w: 447, h: 447, alt: 'Fachada do 1º Cartório de Notas, com a placa de serviços ao lado da porta de vidro.' }],
+  'igreja-sao-jose': [
+    { src: 'assets/img/igreja-sao-jose.jpg', w: 547, h: 365, alt: 'Capela São José, de fachada branca, com portas em arco e cruz no alto.' },
+    { src: 'assets/img/igreja-sao-jose-2.jpg', w: 675, h: 338, alt: 'Fachada e lateral da capela, com a nave de telhado comprido.' },
+    { src: 'assets/img/igreja-sao-jose-3.jpg', w: 250, h: 187, alt: 'Interior da capela, com bancos de madeira e janelas em arco.' }
+  ],
+  'praca-coreto': [
+    { src: 'assets/img/praca-coreto.jpg', w: 738, h: 411, alt: 'O coreto da praça, com pilares escuros e cobertura branca.' },
+    { src: 'assets/img/praca-coreto-2.jpg', w: 447, h: 447, alt: 'Coreto entre árvores, com bancos de concreto em primeiro plano.' },
+    { src: 'assets/img/praca-coreto-3.jpg', w: 678, h: 452, alt: 'Vista aérea da Praça do Coreto, arborizada, com caminhos e área central.' },
+    { src: 'assets/img/praca-coreto-4.jpg', w: 515, h: 388, alt: 'Vista aérea do entorno da praça, com quadras arborizadas e um edifício circular.' }
+  ],
+  'carnaval': [
+    { src: 'assets/img/carnaval.jpg', w: 686, h: 446, alt: 'Carro alegórico com plumas e passistas fantasiadas no desfile noturno.' },
+    { src: 'assets/img/carnaval-2.jpg', w: 678, h: 452, alt: 'Foliões de camiseta amarela do mesmo bloco cantando na rua.' },
+    { src: 'assets/img/carnaval-3.jpg', w: 738, h: 414, alt: 'Show em palco iluminado diante do público durante o carnaval.' }
+  ],
+  'aperam-escritorio': [
+    { src: 'assets/img/aperam-escritorio.jpg', w: 738, h: 414, alt: 'Fachada do Escritório Central da Aperam, com jardim e a placa da empresa.' },
+    { src: 'assets/img/aperam-escritorio-2.jpg', w: 515, h: 388, alt: 'Prédio do escritório com mastros de bandeiras e espelho d’água.' },
+    { src: 'assets/img/aperam-escritorio-3.jpg', w: 638, h: 480, alt: 'Ambiente interno de trabalho do escritório.' }
+  ],
+  'escola-metalurgia': [
+    { src: 'assets/img/escola-metalurgia.jpg', w: 638, h: 480, alt: 'Estudantes reunidos no gramado diante do prédio de dois pavimentos da antiga escola.' },
+    { src: 'assets/img/escola-metalurgia-2.jpg', w: 515, h: 388, alt: 'Portal de entrada do CEFET-MG, Campus Timóteo.' },
+    { src: 'assets/img/escola-metalurgia-3.jpg', w: 597, h: 335, alt: 'Edifício branco de um pavimento no campus, com pista e gramado à frente.' }
+  ],
+  'ee-percival-farquhar': [
+    { src: 'assets/img/ee-percival-farquhar.jpg', w: 547, h: 365, alt: 'Fachada de tijolos aparentes da E.E. Percival Farquhar, com arcos e janelas.' },
+    { src: 'assets/img/ee-percival-farquhar-2.jpg', w: 598, h: 450, alt: 'Volumes em arco de tijolo maciço do prédio da escola.' },
+    { src: 'assets/img/ee-percival-farquhar-3.jpg', w: 540, h: 370, alt: 'Fotografia de grupo de estudantes diante dos arcos de tijolo da escola.' }
+  ],
+  'igreja-ana-moura': [{ src: 'assets/img/igreja-ana-moura.jpg', w: 399, h: 501, alt: 'Fachada azul-clara da Igreja do Ana Moura, com cruz e escadaria florida.' }],
+  'ee-getulio-vargas': [{ src: 'assets/img/ee-getulio-vargas.jpg', w: 447, h: 447, alt: 'Prédio térreo branco da E.E. Getúlio Vargas, com janelas azuis e a encosta verde ao fundo.' }],
+  'praca-coliseu': [
+    { src: 'assets/img/praca-coliseu.jpg', w: 554, h: 554, alt: 'Arquibancada circular da Praça do Coliseu, com arcos vermelhos e brancos ao fundo.' },
+    { src: 'assets/img/praca-coliseu-2.jpg', w: 515, h: 388, alt: 'Arcos coloridos da Praça do Coliseu, com pérgola e piso de pedra.' },
+    { src: 'assets/img/praca-coliseu-3.jpg', w: 738, h: 411, alt: 'Vista aérea da Praça do Coliseu, com o círculo de arcos e as ruas do entorno.' }
+  ],
+  'prefeitura': [{ src: 'assets/img/prefeitura.jpg', w: 554, h: 554, alt: 'Edifício da Sede da Prefeitura de Timóteo, entre palmeiras e pinheiros.' }],
+  'biquinha': [{ src: 'assets/img/biquinha.jpg', w: 408, h: 306, alt: 'Praça da Biquinha, com pérgola de madeira e muros brancos junto à encosta.' }],
+  'centro-vivencia': [
+    { src: 'assets/img/centro-vivencia.jpg', w: 680, h: 383, alt: 'Fachada com o letreiro “Centro de Convivência Trajano Quirino Bicalho”.' },
+    { src: 'assets/img/centro-vivencia-2.jpg', w: 680, h: 383, alt: 'Prédio do centro com arcos de tijolo vazado e cobertura metálica.' }
+  ],
+  'escola-virginia-reis': [
+    { src: 'assets/img/escola-virginia-reis.jpg', w: 515, h: 388, alt: 'Vista aérea da Escola Municipal Virgínia de Souza Reis, com pátio central.' },
+    { src: 'assets/img/escola-virginia-reis-2.jpg', w: 547, h: 365, alt: 'Pátio da escola, com paredes brancas e faixas azuis.' }
+  ],
+  'ee-joao-cotta': [
+    { src: 'assets/img/ee-joao-cotta.jpg', w: 546, h: 366, alt: 'Prédio da escola na encosta, com fachada colorida.' },
+    { src: 'assets/img/ee-joao-cotta-2.jpg', w: 515, h: 388, alt: 'Fachada da E.E. João Cotta de Figueiredo Barcelos vista da rua.' },
+    { src: 'assets/img/ee-joao-cotta-3.jpg', w: 738, h: 414, alt: 'Reunião em sala da escola, com participantes sentados em roda.' }
+  ]
 };

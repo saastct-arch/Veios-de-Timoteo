@@ -10,38 +10,43 @@ Auditoria feita em 12/10/2026 sobre **todas** as imagens do site. A lista das fo
 
 ## Pontos da rota
 
-| # | Ponto | Arquivo(s) | Qtd. | Resolução | Correspondência / observações | Ação |
-|---|---|---|---|---|---|---|
-| 1 | Estação Mário Carvalho | `estacao-mario-carvalho{,-2..-5}.webp` | 5 | 960×640 · 500×375 · 500×333 · 515×388 · 500×326 | Plataforma, placa da estação e trilhos da EFVM: corresponde. A nº 5 tem a assinatura **"Becam Produções"** (crédito no site; licença confirmada). Convertidas de PNG para WebP (de 2,2 MB para 0,3 MB). | manter |
-| 2 | 1º Cartório de Notas | — | 0 | — | Sem fotografia. | buscar |
-| 3 | Igreja São José | — (removida) | 0 | — | A antiga `igreja-sao-jose.jpg` mostrava a igreja com cúpula, que é a **Igreja Católica São José**, um edifício diferente da capela de 1947 descrita no ponto (confirmado pela equipe). A foto foi retirada do ponto e do repositório. | **buscar** foto da capela de 1947 |
-| 3 | Tapetes de Corpus Christi | `tapetes-corpus-christi.jpg` | 1 | 900×881 | Confecção de tapete de serragem: corresponde à manifestação. A rua não é identificável na imagem. | manter |
-| 4 | Praça do Coreto | `praca-coreto.jpg` | 1 | **246×164** | Vista aérea da praça; resolução muito baixa. | **substituir** |
-| 4 | Carnaval Tradicional | `carnaval.jpg` | 1 | **246×164** | Desfile noturno; resolução muito baixa. | **substituir** |
-| 5 | Escritório Central da Aperam | — | 0 | — | Sem fotografia. | buscar |
-| 6 | Ginásio José York | `ginasio-jose-york.jpg` | 1 | 738×414 | Vista aérea do ginásio circular; o mesmo edifício aparece na foto do manifesto. | manter |
-| 7 | Fundação Aperam | `cantata-natal.jpg` (reutilizada) | 1 | 597×335 | A Cantata é encenada na fachada do prédio histórico da Fundação, que é o que a foto mostra. O texto alternativo diz que o prédio está iluminado para a Cantata. | complementar (foto diurna) |
-| 7 | Cantata de Natal | `cantata-natal.jpg` | 1 | 597×335 | Corresponde. | manter |
-| 8 | Antiga Escola Técnica de Metalurgia | `escola-metalurgia.jpg` | 1 | **246×164** | Prédio com a placa do CEFET-MG. Resolução muito baixa; falta confirmar se é o prédio tombado em 2008. | **substituir / investigar** |
-| 9 | E.E. Percival Farquhar | `ee-percival-farquhar.jpg` | 1 | **246×168** | Foto de grupo diante dos arcos de tijolo (tem caráter documental). Resolução muito baixa, e o prédio aparece pouco. | complementar (fachada) |
-| 10 | Pico do Ana Moura | `pico-ana-moura.jpg` | 1 | 515×388 | Paredão com antenas: corresponde. | manter |
-| 11 | Igreja do Ana Moura | — | 0 | — | Sem fotografia. | buscar |
-| 12 | E.E. Getúlio Vargas | `ee-getulio-vargas.jpg` | 1 | **246×164** | Fachada; resolução muito baixa. | **substituir** |
-| 13 | Estátua Carlos Drummond | `estatua-drummond.jpg` | 1 | 512×599 (retrato) | Corresponde. Por ser vertical, aparece inteira (`contain`), sem corte. | manter |
-| 14 | Praça do Coliseu | — | 0 | — | Sem fotografia. | buscar |
-| 15 | Feira do Timirim | `feira-timirim.jpg` | 1 | 515×388 | Corresponde. | manter |
-| 16 | Sede da Prefeitura | — | 0 | — | Sem fotografia. | buscar |
-| 17 | Casa de Memória do Legislativo | `casa-memoria-legislativo.jpg` | 1 | **246×164** | Casarão térreo: corresponde à descrição (casarão de 1922). Resolução muito baixa. | **substituir** |
-| 18 | Igreja Matriz de São Sebastião | `igreja-sao-sebastiao.jpg` | 1 | **194×259** | Torre de tijolos e escadaria. Resolução muito baixa. | **substituir** |
-| 19 | Chafariz e Olho-D'Água (Biquinha) | — | 0 | — | Sem fotografia. | buscar |
-| 20 | Centro de Vivência Trajano Quirino Bicalho | — | 0 | — | Sem fotografia. | buscar |
-| 21 | Oikós | `oikos.jpg` | 1 | 515×388 | Alameda arborizada com visitantes: corresponde. | manter |
-| 22 | Forno Hoffmann | `forno-hoffmann.jpg` | 1 | 515×388 | Chaminé e estrutura de tijolos: corresponde. | manter |
-| 23 | E.M. Virgínia de Souza Reis | — | 0 | — | Sem fotografia. | buscar |
-| 24 | Ponte Mauá | `ponte-maua.jpg` | 1 | 567×352 | Ponte em arco: corresponde. Tem a marca-d'água **"DA"** (*Diário do Aço*), com crédito no site; licença confirmada. A marca não foi removida. | manter |
-| 25 | E.E. João Cotta de Figueiredo Barcelos | — | 0 | — | Sem fotografia. | buscar |
+Em 12/10/2026, a equipe enviou um pacote com 37 fotos (`Imagens.zip`). Foram incorporadas 33 delas, sem nova compressão (JPEG original, só renomeado para o id do ponto). Ficaram fora:
 
-**Resumo:** são 28 entradas. 18 têm fotografia (a Estação com 5) e 10 exibem o estado "Fotografia em levantamento". 7 imagens estão em baixa resolução (≤ 246 px de largura) e devem ser substituídas.
+- **`E.E. Getúlio Vargas 1.jpg` e `E.M. Virgínia de Souza Reis 2.jpg`:** são o mesmo arquivo, byte a byte. O quadro-negro da foto diz **"Escola Municipal Profª Maria Lúcia — Salvador, BA"**, ou seja, é outra escola, em outro estado. Não representa nenhum dos dois pontos.
+- **`Antiga Escola de Metalurgia 3.jpg`:** tem 141×101 px, pequena demais até para miniatura, e mostra só uma quadra, sem identificação do lugar.
+
+| # | Ponto | Arquivo(s) | Qtd. | Resolução (principal) | Observações | Ação |
+|---|---|---|---|---|---|---|
+| 1 | Estação Mário Carvalho | `estacao-mario-carvalho{,-2..-5}.webp` | 5 | 960×640 | A nº 5 tem a assinatura **"Becam Produções"** (crédito no site). Convertidas de PNG para WebP (de 2,2 MB para 0,3 MB). | manter |
+| 2 | 1º Cartório de Notas | `cartorio.jpg` | 1 | 447×447 | Fachada com a placa "1º Cartório de Notas". | manter |
+| 3 | Igreja São José | `igreja-sao-jose{,-2,-3}.jpg` | 3 | 547×365 | Capela branca com portas em arco (fachada, lateral e interior). A igreja com cúpula, que é a Igreja Católica São José, saiu deste ponto. O interior (250×187) aparece só como miniatura. | manter |
+| 3 | Tapetes de Corpus Christi | `tapetes-corpus-christi.jpg` | 1 | 900×881 | Confecção de tapete de serragem. | manter |
+| 4 | Praça do Coreto | `praca-coreto{,-2..-4}.jpg` | 4 | 738×411 | O coreto (2 fotos) e duas vistas aéreas. A aérea antiga, de 246 px, foi trocada pela versão de 678×452 do mesmo enquadramento. | manter |
+| 4 | Carnaval Tradicional | `carnaval{,-2,-3}.jpg` | 3 | 686×446 | Carro alegórico, bloco na rua e palco. Substitui a foto antiga de 246 px. | manter |
+| 5 | Escritório Central da Aperam | `aperam-escritorio{,-2,-3}.jpg` | 3 | 738×414 | Fachada com a placa da empresa, espelho d'água e ambiente interno. | manter |
+| 6 | Ginásio José York | `ginasio-jose-york.jpg` | 1 | 738×414 | Vista aérea do ginásio circular. | manter |
+| 7 | Fundação Aperam | `cantata-natal.jpg` (reutilizada) | 1 | 597×335 | Fachada do prédio histórico iluminada para a Cantata. | complementar (foto diurna) |
+| 7 | Cantata de Natal | `cantata-natal.jpg` | 1 | 597×335 | — | manter |
+| 8 | Antiga Escola Técnica de Metalurgia | `escola-metalurgia{,-2,-3}.jpg` | 3 | 638×480 | Prédio de dois pavimentos com estudantes, portal do CEFET-MG Campus Timóteo e edifício do campus. Substituem a foto antiga de 246 px. | manter |
+| 9 | E.E. Percival Farquhar | `ee-percival-farquhar{,-2,-3}.jpg` | 3 | 547×365 | Fachada e volumes em arco de tijolo maciço. A foto de grupo é a mesma de antes, agora em 540×370 (antes 246 px). | manter |
+| 10 | Pico do Ana Moura | `pico-ana-moura.jpg` | 1 | 515×388 | — | manter |
+| 11 | Igreja do Ana Moura | `igreja-ana-moura.jpg` | 1 | 399×501 | Fachada azul-clara com cruz. | manter |
+| 12 | E.E. Getúlio Vargas | `ee-getulio-vargas.jpg` | 1 | 447×447 | Fachada; substitui a de 246 px. A foto de sala de aula do pacote foi recusada (ver acima). | complementar |
+| 13 | Estátua Carlos Drummond | `estatua-drummond.jpg` | 1 | 512×599 | — | manter |
+| 14 | Praça do Coliseu | `praca-coliseu{,-2,-3}.jpg` | 3 | 554×554 | Arquibancada circular, arcos e vista aérea. | manter |
+| 15 | Feira do Timirim | `feira-timirim.jpg` | 1 | 515×388 | — | manter |
+| 16 | Sede da Prefeitura | `prefeitura.jpg` | 1 | 554×554 | Edifício entre palmeiras. | manter |
+| 17 | Casa de Memória do Legislativo | `casa-memoria-legislativo.jpg` | 1 | **246×164** | Resolução muito baixa; não veio substituta no pacote. | **substituir** |
+| 18 | Igreja Matriz de São Sebastião | `igreja-sao-sebastiao.jpg` | 1 | **194×259** | Resolução muito baixa; não veio substituta no pacote. | **substituir** |
+| 19 | Chafariz e Olho-D'Água (Biquinha) | `biquinha.jpg` | 1 | 408×306 | Enviada como "Praça da Biquinha": pérgola e muros junto à encosta. | manter |
+| 20 | Centro de Vivência Trajano Quirino Bicalho | `centro-vivencia{,-2}.jpg` | 2 | 680×383 | Fachada com letreiro (que diz "Centro de **Con**vivência") e prédio com arcos. | manter |
+| 21 | Oikós | `oikos.jpg` | 1 | 515×388 | — | manter |
+| 22 | Forno Hoffmann | `forno-hoffmann.jpg` | 1 | 515×388 | — | manter |
+| 23 | E.M. Virgínia de Souza Reis | `escola-virginia-reis{,-2}.jpg` | 2 | 515×388 | Vista aérea e pátio. A foto de sala de aula do pacote foi recusada (ver acima). | manter |
+| 24 | Ponte Mauá | `ponte-maua.jpg` | 1 | 567×352 | Marca-d'água do *Diário do Aço*, com crédito no site. | manter |
+| 25 | E.E. João Cotta de Figueiredo Barcelos | `ee-joao-cotta{,-2,-3}.jpg` | 3 | 546×366 | Prédio na encosta, fachada vista da rua e reunião em sala. | manter |
+
+**Resumo:** os 28 pontos têm fotografia, com 51 fotos no total. Restam 2 fotos em baixa resolução (Casa de Memória e Matriz de São Sebastião), e Fundação Aperam e E.E. Getúlio Vargas podem ganhar fotos complementares. A placa "Fotografia em levantamento" continua no código como proteção: aparece se uma imagem falhar ao carregar ou se um ponto novo entrar sem foto.
 
 ## Imagens editoriais (página inicial)
 
@@ -53,19 +58,14 @@ Auditoria feita em 12/10/2026 sobre **todas** as imagens do site. A lista das fo
 | `historia-figure-3.webp` | História, capítulo 02 | 640×480 | Igreja Católica São José, vista aérea. Legenda e texto alternativo corrigidos. | manter |
 | `manifesto-figure.webp` | Manifesto | 978×550 | Vista aérea com o Ginásio José York. | manter |
 
-## Pontos sem fotografia: o que o site mostra
+## Candidatas externas (para as 2 fotos ainda em baixa resolução)
 
-Os 10 pontos sem imagem verificada exibem uma placa intencional: o símbolo do Veio, "Fotografia em levantamento" e um convite à visita. O site **não** usa fotos de outros lugares, fotos parecidas nem imagens geradas por IA. A antiga grade com quatro quadros tracejados "Imagem a ser inserida" foi removida: a galeria mostra só as fotos que existem.
-
-## Busca de substitutas: limitação deste ciclo
-
-O ambiente em que este trabalho foi feito **bloqueia o acesso de rede** a Wikimedia Commons, Wikipedia, ao site da Prefeitura e a outros acervos. Só a busca textual funcionou, e não foi possível baixar nem inspecionar nenhuma imagem externa. Por isso, **nenhuma foto externa foi incorporada**. As candidatas encontradas na busca estão abaixo e precisam ser abertas, conferidas e baixadas por quem tiver acesso:
+Nenhuma foto externa foi incorporada: o ambiente de trabalho bloqueava o acesso a Wikimedia Commons e à Prefeitura. Se o pacote da equipe não trouxer versões melhores, estas candidatas, encontradas por busca textual, podem servir. É preciso abri-las e conferir a licença antes de usar:
 
 | Ponto | Candidata | Licença a confirmar |
 |---|---|---|
 | Igreja Matriz de São Sebastião | [Commons — Fachada da Igreja Matriz de São Sebastião, Timóteo MG.JPG](https://commons.wikimedia.org/wiki/File:Fachada_da_Igreja_Matriz_de_S%C3%A3o_Sebasti%C3%A3o,_Tim%C3%B3teo_MG.JPG) (há também uma versão de 2025, com 2869×3825 px) | Commons (geralmente CC BY-SA; conferir na página) |
-| Igreja São José (capela de 1947) | [Commons — Igreja São José Operário de Acesita com a nova Igreja Matriz de São José ao fundo, Timóteo MG.JPG](https://commons.wikimedia.org/wiki/File:Igreja_S%C3%A3o_Jos%C3%A9_Oper%C3%A1rio_de_Acesita_com_a_nova_Igreja_Matriz_de_S%C3%A3o_Jos%C3%A9_ao_fundo,_Tim%C3%B3teo_MG.JPG) (usuário HVL, set/2024) | idem |
-| Contexto (Timirim / Praça do Coliseu) | [Commons — Vista parcial do B. Timirim, Timóteo MG.JPG](https://commons.wikimedia.org/wiki/File:Vista_parcial_do_B._Timirim,_Tim%C3%B3teo_MG.JPG) | idem |
+| Casa de Memória do Legislativo | Página [Casa de Memória — Câmara Municipal](https://www.timoteo.mg.leg.br/institucional/noticias/casa-de-memoria-conta-a-historia-da-cidade-por-meio-da-vida-dos-timotenses) | Câmara: pedir autorização |
 | Vários pontos | Categoria do município no Wikimedia Commons e página [Pontos turísticos da Prefeitura](https://www.timoteo.mg.gov.br/14/pontos-turisticos) | Prefeitura: pedir autorização |
 
 ### Como incorporar uma foto nova

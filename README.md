@@ -78,11 +78,12 @@ A auditoria completa (resolução, correspondência, origem e ação por imagem)
 
 - As fotos ficam em `window.FOTOS` (`data/rota.js`), que é a única fonte do painel. Cada foto tem tamanho real, texto alternativo descritivo e crédito quando ele é conhecido.
 - A galeria mostra só fotos reais (miniaturas com carregamento tardio). Ao tocar, a foto abre ampliada em um `<dialog>`, com legenda e crédito. Uma imagem que falhe ao carregar é trocada pela placa abaixo, sem deixar quadro quebrado.
-- Pontos sem foto verificada exibem a placa "Fotografia em levantamento", com o símbolo do Veio, em vez dos antigos quadros tracejados "Imagem a ser inserida".
+- Se um ponto ficar sem foto verificada, ou se uma imagem falhar ao carregar, o painel exibe a placa "Fotografia em levantamento" com o símbolo do Veio, em vez de um quadro vazio.
 - As 5 fotos da Estação foram convertidas de PNG para WebP (de 2,2 MB para 0,3 MB). Os JPEGs pequenos foram mantidos como estavam, para não perder qualidade em uma nova compressão.
 - A foto principal tem largura fixa (a do painel) e altura proporcional à imagem: não há corte nem faixas vazias.
 - A equipe confirmou as licenças de todas as fotos em uso. A igreja com cúpula é a **Igreja Católica São José**, e não a capela de 1947 do ponto "Igreja São José". Por isso a foto saiu desse ponto, e as figuras da história receberam legendas corretas.
-- **Pendências:** 10 pontos sem foto e 7 fotos em baixa resolução (lista em IMAGENS.md).
+- Com o pacote de fotos enviado pela equipe (10/2026), **os 28 pontos têm fotografia** (51 fotos ao todo). Uma foto do pacote foi recusada porque mostra uma escola de Salvador (BA).
+- **Pendências:** Casa de Memória e Matriz de São Sebastião ainda estão em baixa resolução (ver IMAGENS.md).
 
 ## Estrutura da página e conteúdo
 
