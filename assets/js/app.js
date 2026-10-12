@@ -266,7 +266,7 @@
     }
     var main = photos[0];
     var html = '<figure class="rota__gallery">';
-    html += '<button class="rota__photo rota__photo--main' + (main.h > main.w * 0.9 ? ' is-portrait' : '') + '" type="button" data-action="photo" data-index="0" aria-label="Ampliar fotografia: ' + esc(main.alt) + '">' +
+    html += '<button class="rota__photo rota__photo--main" type="button" data-action="photo" data-index="0" aria-label="Ampliar fotografia: ' + esc(main.alt) + '">' +
       '<img src="' + esc(main.src) + '" width="' + main.w + '" height="' + main.h + '" alt="' + esc(main.alt) + '" decoding="async"></button>';
     if (photos.length > 1) {
       html += '<div class="rota__thumbs">';

@@ -209,21 +209,41 @@ a:hover { color: var(--green-800); }
 
 /* ============================ HistoriaSection ========================= */
 .historia { background: var(--surface-page); padding: var(--space-13) var(--space-10); }
-.historia__intro {
-  max-width: var(--container-max); margin: 0 auto;
-  display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
-  gap: var(--space-11); align-items: start;
-}
-.historia__col { display: flex; flex-direction: column; gap: var(--space-7); }
 .historia__heading {
   font: var(--type-display); color: var(--text-heading); letter-spacing: var(--tracking-display);
   text-transform: uppercase; max-width: 20ch;
 }
-.historia__p { font: var(--type-body); color: var(--text-body); max-width: var(--measure-body); margin: 0; }
-.historia__inline-figure { aspect-ratio: 16 / 9; max-width: var(--measure-body); background: var(--surface-sunken); }
-.historia__inline-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.historia__figure { position: relative; aspect-ratio: 3 / 4; background: var(--surface-sunken); }
-.historia__figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.historia__p { font: var(--type-body); font-size: 16px; color: var(--text-body); max-width: var(--measure-body); margin: 0; }
+
+/* Three chapters, text and photo alternating sides. A copper Veio runs down
+   the gutter between the columns and lights a node at each chapter. */
+.historia__story { position: relative; max-width: var(--container-max); margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-12); }
+.historia__story::before {
+  content: ''; position: absolute; top: var(--space-4); bottom: var(--space-4); left: 50%; width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--copper-300) 8%, var(--copper-300) 92%, transparent);
+  opacity: .55;
+}
+.historia__chapter { position: relative; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); column-gap: var(--space-12); align-items: start; }
+.historia__chapter::before {
+  content: ''; position: absolute; left: 50%; top: var(--space-3); width: 11px; height: 11px; margin-left: -5.5px;
+  border-radius: 50%; background: var(--copper-400); box-shadow: 0 0 0 4px var(--surface-page), var(--glow-veio-sm);
+}
+.historia__chapter--flip .historia__text { grid-column: 2; grid-row: 1; }
+.historia__chapter--flip .historia__fig { grid-column: 1; grid-row: 1; }
+.historia__text { display: flex; flex-direction: column; gap: var(--space-6); }
+.historia__era { display: flex; align-items: baseline; gap: var(--space-4); margin: var(--space-2) 0 0; font: var(--type-eyebrow); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--copper-600); }
+.historia__era span { font: var(--weight-display) var(--size-xl)/1 var(--font-display); color: var(--copper-500); letter-spacing: 0; }
+.historia__closing {
+  margin: 0; max-width: 46ch; padding-left: var(--space-6); border-left: 2px solid var(--copper-400);
+  font: var(--weight-regular) var(--size-lg)/1.5 var(--font-serif); font-style: italic; color: var(--green-800);
+}
+.historia__cta { align-self: flex-start; }
+/* Photos keep their own proportions (no crop, no empty bands) and stay in
+   view beside the text while it scrolls past on wide screens. */
+.historia__fig { margin: 0; position: sticky; top: calc(var(--header-height) + var(--space-7)); display: flex; flex-direction: column; gap: var(--space-3); }
+.historia__fig img { display: block; width: 100%; height: auto; background: var(--surface-sunken); }
+.historia__fig--portrait { max-width: 380px; justify-self: center; }
+.historia__fig figcaption { font: var(--type-body-sm); font-style: italic; color: var(--text-muted); padding-left: var(--space-4); border-left: 1px solid var(--copper-300); }
 
 .historia__numbers { max-width: var(--container-max); margin: var(--space-13) auto 0; }
 .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap: var(--space-6); margin-top: var(--space-8); }
@@ -243,7 +263,13 @@ a:hover { color: var(--green-800); }
 .historia__split-col { display: flex; flex-direction: column; gap: var(--space-4); }
 
 @media (max-width: 900px) {
-  .historia__intro, .historia__split { grid-template-columns: 1fr; }
+  .historia__split { grid-template-columns: 1fr; }
+  .historia__story { gap: var(--space-11); }
+  .historia__story::before, .historia__chapter::before { display: none; }
+  .historia__chapter { grid-template-columns: minmax(0,1fr); row-gap: var(--space-7); }
+  .historia__chapter--flip .historia__text, .historia__chapter--flip .historia__fig { grid-column: 1; grid-row: auto; }
+  .historia__fig { position: static; }
+  .historia__fig--portrait { max-width: 340px; justify-self: start; }
 }
 
 /* ============================= RotaSection ============================ */
@@ -335,8 +361,10 @@ a:hover { color: var(--green-800); }
 }
 .rota__photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--duration-normal) var(--ease-out-soft); }
 .rota__photo:hover img { transform: scale(1.02); }
-.rota__photo--main { aspect-ratio: 3 / 2; }
-.rota__photo--main.is-portrait img { object-fit: contain; }
+/* Main photo: full panel width, height from the image's own ratio (the
+   width/height attributes reserve it before load) — never letterboxed. */
+.rota__photo--main { aspect-ratio: auto; }
+.rota__photo--main img { height: auto; object-fit: initial; }
 .rota__thumbs { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--space-3); }
 .rota__photo-caption { font: var(--type-label); letter-spacing: .04em; color: var(--text-on-inverse-muted); }
 .rota__photo-empty {

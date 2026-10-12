@@ -216,7 +216,9 @@ window.FOTOS = {
     { src: 'assets/img/estacao-mario-carvalho-4.webp', w: 515, h: 388, alt: 'Acesso à estação, com a cobertura de concreto entre árvores.' },
     { src: 'assets/img/estacao-mario-carvalho-5.webp', w: 500, h: 326, alt: 'Passageiros na plataforma ao lado do trem de passageiros da Vitória a Minas.', credit: 'Becam Produções' }
   ],
-  'igreja-sao-jose': [{ src: 'assets/img/igreja-sao-jose.jpg', w: 515, h: 388, alt: 'Igreja de fachada branca com cúpula, cercada por palmeiras.' }],
+  /* 'igreja-sao-jose' has no photo on purpose: the domed church in the old
+     field photo is the Igreja Católica São José, a different building from
+     the 1947 chapel this point describes (confirmed by the project team). */
   'tapetes-corpus-christi': [{ src: 'assets/img/tapetes-corpus-christi.jpg', w: 900, h: 881, alt: 'Moradores confeccionam um tapete de serragem colorida na rua para a celebração de Corpus Christi.' }],
   'praca-coreto': [{ src: 'assets/img/praca-coreto.jpg', w: 246, h: 164, alt: 'Vista aérea da Praça do Coreto, arborizada, com caminhos e área central.' }],
   'carnaval': [{ src: 'assets/img/carnaval.jpg', w: 246, h: 164, alt: 'Desfile noturno de carnaval, com carro alegórico e público ocupando a rua.' }],
