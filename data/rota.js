@@ -1,7 +1,22 @@
 /* Plain-script mirror of the route data. 25 numbered points (28 entries —
    some numbers cover two entries at the same stop). Coordinates from the
    route's .gpx; long text, links and next-stop timing from
-   rota_patrimonios_timoteo_descricoes.md and Italo's travel-time table. */
+   rota_patrimonios_timoteo_descricoes.md and Italo's travel-time table.
+
+   Optional fields per point:
+   - address: postal address, shown in the detail panel and used as the
+     Google Maps destination (falls back to coords when absent).
+   - tipo: 'manifestacao' marks intangible heritage (celebrations held at a
+     place) as opposed to a building/space; the UI labels and draws them
+     differently. Absent = lugar.
+   A point can belong to any number of thematic routes (ROTAS_TEMATICAS)
+   without being duplicated here. */
+
+/* Paróquia São José de Acesita — Praça 1.º de Maio, 89. Shared by the
+   church and by the Tapetes de Corpus Christi, whose reference address it
+   is. Coordinates for both come from the route .gpx (stop 3). */
+var ENDERECO_PRACA_1_MAIO = 'Praça 1.º de Maio, 89 — Centro, Timóteo - MG, 35180-018';
+
 window.ROTA = [
   { id: 'estacao', number: '1', name: 'Estação Mário Carvalho', coords: [-19.52597, -42.64429],
     short: 'Antiga estação ferroviária que representa a importância da Estrada de Ferro Vitória a Minas para a formação e o desenvolvimento de Timóteo.',
@@ -14,16 +29,23 @@ window.ROTA = [
     links: [ { label: 'Cartório Judicial — informações', url: 'https://cartoriojudicial.com.br/cartorios/mg/timoteo/1-cartorio-de-notas-de-timoteo' } ],
     next: { id: 'igreja-sao-jose', time: '00:01:02', km: 0.232 } },
   { id: 'igreja-sao-jose', number: '3', name: 'Igreja São José', coords: [-19.53962, -42.64661],
+    address: ENDERECO_PRACA_1_MAIO,
     short: 'Templo que representa a tradição religiosa e a formação das comunidades que acompanharam o crescimento de Timóteo.',
     long: 'Também conhecida como Igreja São José Operário ou Igreja São José de Acesita, o templo foi construído pela antiga Acesita em 1947, durante os primeiros anos de implantação da indústria siderúrgica em Timóteo, para atender religiosamente os moradores da vila operária. Tornou-se um dos primeiros e principais espaços religiosos do núcleo urbano ligado à empresa. Em 2014, o Ministério Público de Minas Gerais destacou sua importância para a memória do município e sua inclusão no Inventário de Proteção do Acervo Cultural de Timóteo.',
     links: [ { label: 'Ministério Público de MG', url: 'https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/liminar-proibe-intervencao-na-igreja-sao-jose-edificacao-de-valor-historico-e-cultural-de-timoteo-no-vale-do-aco.shtml' }, { label: 'Wikipédia', url: 'https://pt.wikipedia.org/wiki/Igreja_S%C3%A3o_Jos%C3%A9_Oper%C3%A1rio_%28Tim%C3%B3teo%29' } ],
+    next: { id: 'praca-coreto', time: '00:00:18', km: 0.026 } },
+  { id: 'tapetes-corpus-christi', number: '3', name: 'Tapetes de Corpus Christi', coords: [-19.53962, -42.64661],
+    address: ENDERECO_PRACA_1_MAIO, tipo: 'manifestacao',
+    short: 'Manifestação religiosa e cultural que transforma as ruas em um grande cenário de fé, arte e participação comunitária.',
+    long: 'A confecção dos tapetes de Corpus Christi é uma manifestação religiosa e cultural que mobiliza a comunidade para a criação de desenhos e caminhos ornamentais nas ruas durante a celebração católica. Além do significado religioso, a tradição envolve trabalho coletivo, criatividade e transmissão de costumes entre gerações.',
+    links: [ { label: 'Portal da Prefeitura', url: 'https://www.timoteo.mg.gov.br/' } ],
     next: { id: 'praca-coreto', time: '00:00:18', km: 0.026 } },
   { id: 'praca-coreto', number: '4', name: 'Praça do Coreto', coords: [-19.53942, -42.64673],
     short: 'Espaço tradicional de convivência, encontros e manifestações culturais, marcado pela presença do coreto.',
     long: 'A Praça do Coreto é um espaço público de convivência e de realização de atividades culturais e comunitárias em Timóteo, utilizado como palco para eventos, apresentações musicais, ações sociais e atividades promovidas pelo município e por instituições parceiras. Sua importância está menos associada a uma única edificação histórica e mais ao papel que a praça desempenha na vida urbana. Em anos recentes, o local recebeu festivais culturais, apresentações musicais e ações públicas.',
     links: [ { label: 'Prefeitura — Festival Tambatuques', url: 'https://www.timoteo.mg.gov.br/noticias/32229/festival-tambatuques-agita-timoteo-na-praca-do-coreto' }, { label: 'Portal da Prefeitura', url: 'https://www.timoteo.mg.gov.br/' } ],
     next: { id: 'aperam-escritorio', time: '00:00:46', km: 0.213 } },
-  { id: 'carnaval', number: '4', name: 'Carnaval Tradicional', coords: [-19.53942, -42.64673],
+  { id: 'carnaval', number: '4', name: 'Carnaval Tradicional', coords: [-19.53942, -42.64673], tipo: 'manifestacao',
     short: 'Manifestação cultural que preserva a tradição carnavalesca e reúne a comunidade em momentos de celebração e confraternização.',
     long: 'O Carnaval Tradicional representa uma das manifestações culturais populares associadas à identidade de Timóteo. Mais do que uma festa, reúne música, participação comunitária e ocupação dos espaços públicos. A tradição carnavalesca faz parte do conjunto de manifestações culturais que ajudam a preservar costumes e fortalecer os vínculos entre gerações, contribuindo também para a movimentação cultural e turística do município.',
     links: [ { label: 'Centro Turístico Mata Atlântica de Minas', url: 'https://ctmam.org.br/cidade/timoteo/' }, { label: 'Portal da Prefeitura', url: 'https://www.timoteo.mg.gov.br/' } ],
@@ -43,7 +65,7 @@ window.ROTA = [
     long: 'A Fundação Aperam Acesita foi criada em junho de 1994 e atua no desenvolvimento das comunidades onde a Aperam mantém suas principais atividades, com programas de educação, cultura, meio ambiente e promoção social. Sua sede histórica foi construída na década de 1950 e originalmente funcionava como residência para empregados vindos de outras cidades para trabalhar na Acesita. O Centro Cultural foi inaugurado em 31 de outubro de 1994 e tornou-se referência cultural para Timóteo e para o Vale do Aço.',
     links: [ { label: 'Fundação Aperam Acesita', url: 'https://brasil.aperam.com/sustentabilidade/social/fundacao-aperam-acesita/' }, { label: 'Centro Cultural', url: 'https://brasil.aperam.com/sustentabilidade/social/fundacao-aperam-acesita/centro-cultural/' } ],
     next: { id: 'escola-metalurgia', time: '00:01:50', km: 0.702 } },
-  { id: 'cantata-natal', number: '7', name: 'Cantata de Natal', coords: [-19.53654, -42.64615],
+  { id: 'cantata-natal', number: '7', name: 'Cantata de Natal', coords: [-19.53654, -42.64615], tipo: 'manifestacao',
     short: 'Tradicional celebração natalina que reúne música, cultura e comunidade em um dos períodos mais simbólicos do ano.',
     long: 'A Cantata de Natal da Fundação Aperam é uma das manifestações culturais mais tradicionais do calendário de Timóteo. O evento utiliza a fachada do histórico prédio da Fundação como cenário para apresentações musicais, iluminação e outras atrações natalinas. A tradição já possui décadas de história — em 2018, por exemplo, foi realizada a 24ª edição — reunindo moradores de Timóteo e de outras cidades do Vale do Aço.',
     links: [ { label: 'Aperam — Cantata de Natal', url: 'https://brasil.aperam.com/cantata-de-natal-da-fundacao-aperam-acesita-promove-espetaculo-de-luz-cor-e-som/' }, { label: 'Portal Minas Gerais', url: 'https://www.minasgerais.com.br/pt/eventos/timoteo/cantata-de-natal-fundacao-aperam' } ],
@@ -103,11 +125,6 @@ window.ROTA = [
     long: 'A Igreja Matriz de São Sebastião está ligada à tradição religiosa e à formação do núcleo urbano de Timóteo — São Sebastião é o padroeiro do município. A história da comunidade remonta ao antigo núcleo conhecido como São Sebastião do Alegre: em 1907 foi doado um terreno para a construção de uma pequena igreja de madeira na região que corresponde à atual Praça 29 de Abril. A atual igreja matriz representa a continuidade dessa tradição.',
     links: [ { label: 'Prefeitura — São Sebastião', url: 'https://www.timoteo.mg.gov.br/15/localizacao.aspx' }, { label: 'Wikipédia — Timóteo', url: 'https://pt.wikipedia.org/wiki/Tim%C3%B3teo' } ],
     next: { id: 'biquinha', time: '00:01:10', km: 0.479 } },
-  { id: 'tapetes-corpus-christi', number: '18', name: 'Tapetes de Corpus Christi', coords: [-19.58242, -42.64452],
-    short: 'Manifestação religiosa e cultural que transforma as ruas em um grande cenário de fé, arte e participação comunitária.',
-    long: 'A confecção dos tapetes de Corpus Christi é uma manifestação religiosa e cultural que mobiliza a comunidade para a criação de desenhos e caminhos ornamentais nas ruas durante a celebração católica. Além do significado religioso, a tradição envolve trabalho coletivo, criatividade e transmissão de costumes entre gerações.',
-    links: [ { label: 'Portal da Prefeitura', url: 'https://www.timoteo.mg.gov.br/' } ],
-    next: { id: 'biquinha', time: '00:01:10', km: 0.479 } },
   { id: 'biquinha', number: '19', name: 'Chafariz e Olho-D’Água – Biquinha', coords: [-19.58082, -42.64375],
     short: 'Fonte histórica ligada à memória da cidade e ao uso das águas, preservando uma importante referência do passado de Timóteo.',
     long: 'Conhecido como Biquinha, o Chafariz e Olho-D\'Água é um dos elementos mais antigos ligados ao abastecimento e à vida cotidiana da população de Timóteo. Segundo registros históricos e depoimentos de antigos moradores, o local possuía nascentes e bicas utilizadas pela comunidade numa época sem abastecimento de água encanada nas residências. Foi tombado pela Prefeitura pelo Decreto nº 1.285, de 22 de abril de 1988.',
@@ -153,12 +170,18 @@ window.PILARES = [
   { icon: 'leaf', label: 'Futuro', description: 'o que vem' },
 ];
 
+/* Every figure carries its reference date and source; checked against
+   IBGE Cidades@ and Aperam on 2026-10-12. */
+window.NUMEROS_FONTES = {
+  ibge: { label: 'IBGE Cidades@ — Timóteo', url: 'https://www.ibge.gov.br/cidades-e-estados/mg/timoteo.html' },
+  aperam: { label: 'Aperam — Nossa História', url: 'https://brasil.aperam.com/institucional/aperam/nossa-historia/' }
+};
 window.NUMEROS_TIMOTEO = [
-  { value: '81,6 mil', label: 'habitantes', note: 'População registrada pelo IBGE no Censo 2022.' },
-  { value: '144,4 km²', label: 'área territorial', note: 'Área territorial do município.' },
-  { value: '565 hab./km²', label: 'densidade demográfica', note: 'Densidade demográfica registrada no Censo 2022.' },
-  { value: 'R$ 56,9 mil', label: 'PIB per capita', note: 'PIB per capita de Timóteo em 2023.' },
-  { value: '1944', label: 'fundação da Acesita', note: 'Ano de fundação da Acesita, empresa que marcou a industrialização e o desenvolvimento de Timóteo.' },
+  { value: '81,6 mil', label: 'habitantes', note: '81.579 pessoas recenseadas.', ref: 'Censo 2022', fonte: 'ibge' },
+  { value: '144,4 km²', label: 'área territorial', note: '144,377 km² de território municipal.', ref: '2025', fonte: 'ibge' },
+  { value: '565 hab./km²', label: 'densidade demográfica', note: '565,03 habitantes por km².', ref: 'Censo 2022', fonte: 'ibge' },
+  { value: 'R$ 57,0 mil', label: 'PIB per capita', note: 'R$ 56.987,61 por habitante.', ref: '2023', fonte: 'ibge' },
+  { value: '1944', label: 'fundação da Acesita', note: 'A siderúrgica, fundada em 31 de outubro, impulsionou a formação da cidade.', ref: '31/10/1944', fonte: 'aperam' },
 ];
 
 /* Thematic sub-routes — curated subsets of window.ROTA, in visiting order.
@@ -169,7 +192,7 @@ window.ROTAS_TEMATICAS = [
   { id: 'fe', label: 'Fé', icon: 'church',
     pointIds: ['igreja-sao-jose', 'igreja-ana-moura', 'igreja-sao-sebastiao', 'tapetes-corpus-christi'] },
   { id: 'cultura', label: 'Cultura', icon: 'users',
-    pointIds: ['carnaval', 'feira-timirim', 'cantata-natal'] },
+    pointIds: ['carnaval', 'tapetes-corpus-christi', 'feira-timirim', 'cantata-natal'] },
   { id: 'industrializacao', label: 'Industrialização', icon: 'factory',
     pointIds: ['fundacao-aperam', 'aperam-escritorio', 'forno-hoffmann', 'escola-metalurgia', 'ponte-maua', 'estacao'] },
   { id: 'lazer', label: 'Lazer', icon: 'trees',
@@ -177,3 +200,40 @@ window.ROTAS_TEMATICAS = [
   { id: 'educacao', label: 'Educação', icon: 'graduation-cap',
     pointIds: ['escola-virginia-reis', 'ee-joao-cotta', 'ee-getulio-vargas', 'ee-percival-farquhar'] },
 ];
+
+/* Photographs per point, in display order (first = main). Single source
+   for the detail panel and its gallery — see IMAGENS.md for the audit,
+   provenance and pending checks of every file. `w`/`h` are the file's
+   real pixel size (reserves layout space before the image loads).
+   `credit` is shown under the photo; set only when the author is known
+   (here: signatures visible in the image itself). Points absent from this
+   map get the "fotografia em levantamento" plate instead of an empty slot. */
+window.FOTOS = {
+  'estacao': [
+    { src: 'assets/img/estacao-mario-carvalho.webp', w: 960, h: 640, alt: 'Plataforma coberta da Estação Mário Carvalho, com a placa de identificação da estação.' },
+    { src: 'assets/img/estacao-mario-carvalho-2.webp', w: 500, h: 375, alt: 'Composições de minério e trem de passageiros nos trilhos da Estrada de Ferro Vitória a Minas, com morros ao fundo.' },
+    { src: 'assets/img/estacao-mario-carvalho-3.webp', w: 500, h: 333, alt: 'Área de embarque da estação sob a cobertura metálica, com a placa “Estação Mário Carvalho”.' },
+    { src: 'assets/img/estacao-mario-carvalho-4.webp', w: 515, h: 388, alt: 'Acesso à estação, com a cobertura de concreto entre árvores.' },
+    { src: 'assets/img/estacao-mario-carvalho-5.webp', w: 500, h: 326, alt: 'Passageiros na plataforma ao lado do trem de passageiros da Vitória a Minas.', credit: 'Becam Produções' }
+  ],
+  'igreja-sao-jose': [{ src: 'assets/img/igreja-sao-jose.jpg', w: 515, h: 388, alt: 'Igreja de fachada branca com cúpula, cercada por palmeiras.' }],
+  'tapetes-corpus-christi': [{ src: 'assets/img/tapetes-corpus-christi.jpg', w: 900, h: 881, alt: 'Moradores confeccionam um tapete de serragem colorida na rua para a celebração de Corpus Christi.' }],
+  'praca-coreto': [{ src: 'assets/img/praca-coreto.jpg', w: 246, h: 164, alt: 'Vista aérea da Praça do Coreto, arborizada, com caminhos e área central.' }],
+  'carnaval': [{ src: 'assets/img/carnaval.jpg', w: 246, h: 164, alt: 'Desfile noturno de carnaval, com carro alegórico e público ocupando a rua.' }],
+  'ginasio-jose-york': [{ src: 'assets/img/ginasio-jose-york.jpg', w: 738, h: 414, alt: 'Vista aérea do Ginásio Poliesportivo José York, edifício circular à margem de uma avenida.' }],
+  /* Same file as the Cantata: the event is staged on this building's
+     façade, so the photo genuinely shows the Fundação's historic seat. */
+  'fundacao-aperam': [{ src: 'assets/img/cantata-natal.jpg', w: 597, h: 335, alt: 'Fachada do prédio histórico da Fundação Aperam, iluminada durante a Cantata de Natal.' }],
+  'cantata-natal': [{ src: 'assets/img/cantata-natal.jpg', w: 597, h: 335, alt: 'Fachada da Fundação Aperam iluminada para a Cantata de Natal, entre palmeiras e fogos de artifício.' }],
+  'escola-metalurgia': [{ src: 'assets/img/escola-metalurgia.jpg', w: 246, h: 164, alt: 'Prédio da antiga Escola Técnica de Metalurgia, com a placa do CEFET-MG em primeiro plano.' }],
+  'ee-percival-farquhar': [{ src: 'assets/img/ee-percival-farquhar.jpg', w: 246, h: 168, alt: 'Fotografia de grupo de estudantes diante dos arcos de tijolo maciço da escola.' }],
+  'pico-ana-moura': [{ src: 'assets/img/pico-ana-moura.jpg', w: 515, h: 388, alt: 'Paredão rochoso do Pico do Ana Moura com antenas no topo.' }],
+  'ee-getulio-vargas': [{ src: 'assets/img/ee-getulio-vargas.jpg', w: 246, h: 164, alt: 'Prédio térreo da E.E. Getúlio Vargas, com escadaria e gramado à frente.' }],
+  'estatua-drummond': [{ src: 'assets/img/estatua-drummond.jpg', w: 512, h: 599, alt: 'Estátua de bronze de Carlos Drummond de Andrade sentado em um banco.' }],
+  'feira-timirim': [{ src: 'assets/img/feira-timirim.jpg', w: 515, h: 388, alt: 'Bancas de hortaliças e frequentadores sob a cobertura da Feira do Timirim.' }],
+  'casa-memoria-legislativo': [{ src: 'assets/img/casa-memoria-legislativo.jpg', w: 246, h: 164, alt: 'Casarão térreo branco de janelas verdes que abriga a Casa de Memória e Pesquisa do Legislativo.' }],
+  'igreja-sao-sebastiao': [{ src: 'assets/img/igreja-sao-sebastiao.jpg', w: 194, h: 259, alt: 'Torre de tijolos da Igreja Matriz de São Sebastião e a escadaria de acesso.' }],
+  'oikos': [{ src: 'assets/img/oikos.jpg', w: 515, h: 388, alt: 'Visitantes em alameda arborizada do Oikós.' }],
+  'forno-hoffmann': [{ src: 'assets/img/forno-hoffmann.jpg', w: 515, h: 388, alt: 'Chaminé e estrutura de tijolos do Forno Hoffmann, com escadaria à frente.' }],
+  'ponte-maua': [{ src: 'assets/img/ponte-maua.jpg', w: 567, h: 352, alt: 'Ponte Mauá, em arco de concreto, sobre trecho pedregoso do rio.', credit: 'Diário do Aço' }]
+};

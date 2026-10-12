@@ -17,63 +17,79 @@ Abrir `index.html` direto pelo `file://` não funciona — o navegador bloqueia 
 
 Este site substitui uma versão anterior baseada no KML do My Maps. A versão atual segue **o handoff de design entregue** (`Veios de Timóteo — Site.dc.html` + componentes), que por sua vez já veio com dados mais completos:
 
-- **28 entradas de rota** cobrindo **25 paradas** numeradas (alguns números cobrem duas entradas na mesma parada, ex.: Praça do Coreto/Carnaval Tradicional dividem a parada 4), com coordenadas extraídas de um `.gpx` real (rota otimizada, não estimada).
+- **28 entradas de rota** em **25 paradas** numeradas. Alguns números reúnem duas entradas na mesma parada; por exemplo, Praça do Coreto e Carnaval Tradicional dividem a parada 4, e Igreja São José e Tapetes de Corpus Christi dividem a parada 3. As coordenadas vêm de um `.gpx` real, com a rota otimizada, e não foram estimadas.
 - Texto curto, texto longo e links "para saber mais" por ponto, pesquisados em fontes públicas (ipatrimônio, Wikipédia, Aperam, prefeitura e câmara de Timóteo, imprensa regional).
 - Tempo e distância de carro até a próxima parada, por trecho, na Rota Principal.
 - **6 roteiros temáticos** (Memória, Fé, Cultura, Industrialização, Lazer, Educação), cada um um subconjunto curado dos 28 pontos — ver "Roteiros temáticos" abaixo.
-- Uma seção "Timóteo em números" com 5 indicadores (população, área, densidade, PIB per capita, fundação da Acesita).
+- Uma seção "Timóteo em números" com 5 indicadores (população, área, densidade, PIB per capita, fundação da Acesita), cada um com data de referência e fonte.
 - Uma narrativa histórica mais longa e específica (povos indígenas, a Paragem do Ribeirão do Timóteo, Manoel Timóteo, a chegada da Acesita, a autonomia político-administrativa nos anos 1960), com duas fotos aéreas novas ilustrando o texto.
 
 Uma segunda rodada do handoff (a atual) trouxe essas mudanças por cima da primeira — a seção anterior deste README que descrevia 5 pilares e uma linha do tempo circular ("Os veios de Timóteo") não existe mais: o design removeu os dois blocos da `HistoriaSection` nesta rodada.
 
 ## Roteiros temáticos
 
-Acima do mapa, um seletor troca entre a **Rota Principal** (os 28) e 6 recortes temáticos definidos em `window.ROTAS_TEMATICAS` (`data/rota.js`). Trocar de roteiro reordena os pontos por proximidade geográfica — um algoritmo guloso de vizinho mais próximo (`orderByProximity` em `assets/js/app.js`, portado linha a linha do `RotaSection.jsx` do handoff): começa no primeiro ponto listado para aquele roteiro e sempre visita o mais próximo ainda não visitado. A numeração exibida nos pinos e na lista é a **posição no roteiro atual**, não o campo `number` de `data/rota.js` — outra fidelidade ao comportamento do handoff, não uma escolha minha.
+Acima do mapa, um seletor alterna entre a **Rota Principal** (as 28 entradas) e 6 roteiros temáticos definidos em `window.ROTAS_TEMATICAS` (`data/rota.js`). Um ponto pode participar de vários roteiros sem ser duplicado: o roteiro guarda apenas os ids.
 
-O texto de tempo/distância até o próximo ponto só aparece quando o próximo ponto do roteiro *atual* coincide com o próximo hop *original* da Rota Principal (`point.next`) — nos roteiros temáticos, quase sempre não coincide, e o painel mostra só o nome do próximo ponto e o botão "IR".
+- **Rota Principal:** segue a sequência planejada das paradas (campo `number`, a ordem dos trechos medidos no `.gpx`). Assim, o tempo e a distância de carro até a próxima parada (`point.next`) aparecem em quase todos os trechos.
+- **Roteiros temáticos:** são reordenados por proximidade geográfica, como no handoff: `orderByProximity` em `assets/js/app.js` começa no primeiro ponto listado e segue sempre para o mais próximo ainda não visitado.
+
+A numeração dos pinos, da lista e do indicador "Ponto X de N" é a **posição no roteiro atual**, calculada a partir dos dados. O tempo e a distância só aparecem quando o próximo ponto do roteiro coincide com o próximo trecho medido; quando dois pontos ficam no mesmo local, o painel mostra "No mesmo local". Nada é estimado.
+
+### Tapetes de Corpus Christi ("Tapetes C.C.")
+
+- **Endereço de referência:** Praça 1.º de Maio, 89 — Centro, Timóteo - MG, 35180-018 (o endereço da Paróquia São José de Acesita). Ele aparece no painel e é usado como destino do link do Google Maps.
+- **Coordenadas:** as mesmas da Igreja São José na parada 3 do `.gpx` (a igreja fica na Praça 1.º de Maio). As coordenadas antigas, da Matriz de São Sebastião, foram removidas. O ponto passou para a parada 3 da Rota Principal, e o trecho até a Praça do Coreto usa a medição da própria parada.
+- **Roteiros:** Cultura (novo) e Fé (já existente), sem cadastro duplicado.
+- **Tipo:** `tipo: 'manifestacao'`, como o Carnaval e a Cantata. Manifestações culturais aparecem com marcador e etiqueta quadrados e o rótulo "Manifestação cultural", para se distinguirem dos lugares.
 
 ## O mapa
 
-Trocou de base: a primeira rodada usava tiles de rua do OpenStreetMap com um filtro CSS escurecendo tudo; esta usa **imagens de satélite reais** (Esri World Imagery), sem filtro. A linha da rota também deixou de ser reta entre coordenadas — agora é o **caminho real de carro** entre cada par de paradas, buscado em tempo de execução no roteador público [OSRM](http://project-osrm.org/) (`router.project-osrm.org`). Cada trecho pede sua própria geometria de forma assíncrona; enquanto não chega, uma linha reta ocupa o lugar, e o desenho vai sendo substituído trecho a trecho conforme cada resposta volta.
+O mapa trocou de base: a primeira rodada usava tiles de rua do OpenStreetMap com um filtro CSS escurecendo tudo; esta usa **imagens de satélite reais** (Esri World Imagery), sem filtro. A linha da rota também deixou de ser reta entre coordenadas — agora é o **caminho real de carro** entre cada par de paradas, buscado em tempo de execução no roteador público [OSRM](http://project-osrm.org/) (`router.project-osrm.org`). Cada trecho pede sua própria geometria de forma assíncrona; enquanto não chega, uma linha reta ocupa o lugar, e o desenho vai sendo substituído trecho a trecho conforme cada resposta volta.
+
+## Navegação entre pontos ("IR")
+
+Ao trocar de ponto (botão **IR**, **Anterior**, item da lista, marcador do mapa, teclado ou troca de roteiro mantendo o ponto), `select()` em `assets/js/app.js` faz o seguinte:
+
+1. Substitui o conteúdo do painel de forma síncrona. As fotos já têm dimensões reservadas, então o layout não salta quando elas carregam.
+2. Zera a rolagem própria do painel. No desktop, o painel rola de forma independente ao lado do mapa.
+3. Chama `revealInViewport()`: se o título do novo ponto não estiver logo abaixo do cabeçalho fixo (altura medida na hora), a janela rola até ele. Se o título já estiver visível, a página não se move.
+4. Move o foco para o título do ponto, para quem navega por teclado ou leitor de tela.
+
+Não há temporizadores: a rolagem acontece depois da atualização real do DOM. A animação respeita `prefers-reduced-motion`. A barra **Anterior / Próximo · IR** fica fixa no rodapé do painel (no desktop) ou da tela (no celular), ao alcance do polegar. "Todos os pontos" devolve o visitante ao item de onde ele saiu.
 
 ## Estrutura
 
 ```
-index.html                       página única
-data/rota.js                     window.ROTA / PILARES / NUMEROS_TIMOTEO / ROTAS_TEMATICAS — do handoff, sem alterações
-                                  (PILARES existe no arquivo mas não é mais renderizado por nenhuma seção —
-                                  o design parou de usá-lo nesta rodada; deixado como está, por fidelidade)
-assets/tokens/                   tokens do design system "Veios de Timóteo" (cores, tipografia, espaçamento,
-                                  efeitos, motion) — copiados do bundle, sem alterações
-assets/css/site.css              estilos do site, construídos sobre os tokens acima
-assets/js/app.js                 NavBar (troca de tom no scroll) + mapa da rota (Leaflet) + painel de detalhe
-assets/js/icons.js               ícones Lucide usados (subconjunto do design system)
-assets/img/                      fotografias (ver abaixo)
+index.html                       página única: capa → mapa da rota → história e números → intervenção → manifesto
+data/rota.js                     window.ROTA (pontos), ROTAS_TEMATICAS, FOTOS (fotos por ponto),
+                                  NUMEROS_TIMOTEO + NUMEROS_FONTES (indicadores com data e fonte)
+IMAGENS.md                       inventário e auditoria das fotografias, fontes e pendências
+assets/tokens/                   tokens do design system "Veios de Timóteo" (sem alterações)
+assets/css/site.css              estilos do site, construídos sobre os tokens
+assets/js/app.js                 NavBar · números · mapa (Leaflet) + painel de detalhe · galeria ampliada
+assets/js/icons.js               ícones Lucide usados
+assets/img/                      fotografias (ver IMAGENS.md)
 assets/vendor/leaflet/           Leaflet 1.9.4 (local, sem CDN)
 ```
 
 ## Fotografias
 
-O handoff trouxe as imagens **do próprio site**: a capa, e agora **quatro** figuras na seção "A história" (a original mais duas novas, `historia-figure-2`/`-3`, encaixadas entre os parágrafos que contam a fundação e a emancipação do município) e a figura do manifesto — todas usadas como vieram, sem edição. A linha do tempo circular que existia na rodada anterior foi removida pelo próprio design; as 5 fotos que ela usava (`arq-*.png`) saíram do repositório por não terem mais onde entrar.
+A auditoria completa (resolução, correspondência, origem e ação por imagem) está em **[IMAGENS.md](IMAGENS.md)**. Resumo:
 
-Os **slots de imagem por ponto da rota** (principal + 4 extras, por parada) vieram vazios no design — com **uma exceção deliberada**: a Estação Mário Carvalho ganhou **5 fotos reais** nesta rodada, escritas diretamente no `RotaSection.jsx` do handoff (`point.id === 'estacao' ? window.photo('estacao-mario-carvalho...') : undefined`) como exemplo de como as demais deveriam ficar. Reproduzi esse mesmo condicional em `assets/js/app.js`.
+- As fotos ficam em `window.FOTOS` (`data/rota.js`), que é a única fonte do painel. Cada foto tem tamanho real, texto alternativo descritivo e crédito quando ele é conhecido.
+- A galeria mostra só fotos reais (miniaturas com carregamento tardio). Ao tocar, a foto abre ampliada em um `<dialog>`, com legenda e crédito. Uma imagem que falhe ao carregar é trocada pela placa abaixo, sem deixar quadro quebrado.
+- Pontos sem foto verificada exibem a placa "Fotografia em levantamento", com o símbolo do Veio, em vez dos antigos quadros tracejados "Imagem a ser inserida".
+- As 5 fotos da Estação foram convertidas de PNG para WebP (de 2,2 MB para 0,3 MB). Os JPEGs pequenos foram mantidos como estavam, para não perder qualidade em uma nova compressão.
+- **Pendências:** 7 fotos em baixa resolução, 2 com marca de terceiros (Becam Produções, Diário do Aço) e uma possível troca de igreja na foto da Igreja São José e nas figuras da história. Nenhuma imagem externa foi incorporada neste ciclo, porque o ambiente de trabalho não tinha acesso de rede aos acervos. As candidatas encontradas estão listadas em IMAGENS.md.
 
-Para os outros pontos, mantive o que já tinha: o slot principal de **17 paradas** (a Estação saiu dessa lista, agora com tratamento próprio) recebe uma fotografia real levantada em campo numa rodada anterior, casando por nome exato de assunto — tabela em `assets/js/app.js` (objeto `FOTOS`). O restante segue **"Imagem a ser inserida"**, exatamente como o design deixou.
+## Estrutura da página e conteúdo
 
-**Sem foto ainda:** 1º Cartório de Notas · Escritório Central da Aperam · Fundação Aperam (prédio) · Igreja do Ana Moura · Praça do Coliseu · Sede da Prefeitura · Chafariz e Olho-D'Água (Biquinha) · Centro de Vivência Trajano Quirino Bicalho · Escola Municipal Virgínia de Souza Reis · E.E. João Cotta de Figueiredo Barcelos.
-
-## Duas pequenas completudes além do design
-
-O handoff é um protótipo ("recrie com fidelidade visual, não copie a estrutura interna"). Duas peças ficaram deliberadamente inacabadas no mockup e completei por usabilidade mínima, sem alterar nada visual:
-
-1. **Menu mobile.** O botão de menu do NavBar existia no design mas ficava sempre oculto (`display:none`), e os links do menu não quebram linha — em telas estreitas eles simplesmente sairiam da tela. Adicionei um menu suspenso funcional abaixo de 780px, reaproveitando o mesmo botão.
-2. **Botão "Saiba mais sobre a rota" no rodapé.** No design não tinha destino (`onClick`/`href` ausentes). Apontei para `#mapa`, a leitura óbvia do próprio texto do botão.
-
-Nada de conteúdo, cor, tipografia ou layout foi alterado em relação ao handoff.
-
-## Seção "A intervenção urbana"
-
-O próprio design deixa essa seção como `Em desenvolvimento.` — é assim que está aqui também. O bundle de design (`assets/tokens/design-system-readme.md`) descreve o conceito completo (totens em aço corten, bancos interativos, linha do tempo no piso, iluminação cênica), mas essa seção do site ainda não foi desenhada.
+- **O mapa vem logo depois da capa.** A experiência principal não fica mais atrás da narrativa institucional. A história vem em seguida e contextualiza a rota.
+- **"Timóteo em números"** mostra 5 indicadores conferidos no IBGE Cidades@ e na Aperam (consulta em 10/2026), cada um com rótulo, valor exato, data de referência e fonte com link. O PIB per capita foi corrigido de "R$ 56,9 mil" para "R$ 57,0 mil" (R$ 56.987,61 em 2023).
+- **"A intervenção urbana"** deixou de ser um "Em desenvolvimento." solto. Agora apresenta a proposta física descrita no próprio design system (Veio no piso, totens em aço corten, bancos com áudio, linha do tempo no piso, iluminação cênica), com o selo "Em desenvolvimento" e a explicação de que os elementos ainda não foram instalados.
+- **Menu mobile:** o botão tem `aria-expanded` e fecha com Esc. As âncoras usam `scroll-padding-top` para não ficarem sob o cabeçalho fixo.
+- **Mapa:** marcadores próximos ou no mesmo local se abrem em leque (um ponto cobre marca a posição real). O marcador ativo fica por cima e em cobre. O trecho que sai do ponto selecionado é destacado. A roda do mouse só dá zoom depois que o visitante clica no mapa, para não prender a rolagem da página. As geometrias do OSRM ficam em cache durante a visita. A legenda distingue lugares, manifestações e ponto selecionado.
+- **Acessibilidade:** link "Pular para o mapa", `h1` na capa, foco visível em cobre sobre fundos verdes, áreas de toque de 44 a 48 px, marcadores acionáveis por teclado e estados que não dependem só de cor.
 
 ## Design system
 
@@ -97,8 +113,8 @@ Site estático — publica direto na Vercel ou GitHub Pages sem configuração.
 - **Ícone da aba** (favicon): o mark sozinho, cor cobre (`#D29C71`) sobre o verde institucional (`#1B2B22`). SVG como formato principal (`favicon.svg`, nítido em qualquer tamanho), com `.ico`/PNG em 16/32/48/180px como fallback para navegadores que não leem favicon em SVG.
 - **Prévia de link** (Open Graph/Twitter, `og-image.png`, 1200×630): a logo completa — mark + "VEIOS DE TIMÓTEO" — centralizada sobre o mesmo verde, com o eyebrow do Hero ("Patrimônio também se vive no caminho") como assinatura.
 
-**Pendência:** `og:image`, `twitter:image` e `og:url` em `index.html` estão com caminho relativo (`/assets/icons/og-image.png`). O protocolo Open Graph pede URL absoluta — funciona na maioria dos crawlers modernos, mas alguns (principalmente o do WhatsApp) ignoram caminho relativo. Assim que o site tiver domínio fixo (Vercel ou outro), trocar essas três linhas pela URL completa, ex. `https://veios-de-timoteo.vercel.app/assets/icons/og-image.png`.
+`og:image`, `twitter:image` e `og:url` usam URL absoluta no domínio publicado (`https://veios-de-timoteo.vercel.app/`). Se o domínio mudar, atualize essas três linhas.
 
 ## Créditos
 
-Mapa © colaboradores do [OpenStreetMap](https://www.openstreetmap.org/copyright). Fotografias de capa, história e manifesto do acervo do design. Fotografias dos pontos da rota do acervo de campo do grupo.
+Imagens de satélite © Esri. Trajeto calculado pelo [OSRM](http://project-osrm.org/) sobre dados © colaboradores do [OpenStreetMap](https://www.openstreetmap.org/copyright). Fotografias de capa, história e manifesto do acervo do design. Fotografias dos pontos da rota do acervo de campo do grupo; créditos individuais em [IMAGENS.md](IMAGENS.md).

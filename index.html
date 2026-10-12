@@ -16,21 +16,21 @@
 <meta name="theme-color" content="#1B2B22">
 
 <!-- Link preview (Open Graph / Twitter): the full logo lockup on green.
-     og:image/twitter:image and og:url use root-relative paths for now —
-     the spec wants absolute URLs, so once this deploys to its real domain,
-     rewrite these three with that origin (e.g. https://veios-de-timoteo.vercel.app). -->
+     Absolute URLs on the published domain — some crawlers (WhatsApp)
+     ignore relative ones. -->
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://veios-de-timoteo.vercel.app/">
 <meta property="og:site_name" content="Veios de Timóteo">
 <meta property="og:title" content="Veios de Timóteo">
 <meta property="og:description" content="Uma rota urbana que conecta os principais patrimônios de Timóteo (MG) por meio de um elemento contínuo no espaço urbano: o Veio.">
-<meta property="og:image" content="/assets/icons/og-image.png">
+<meta property="og:image" content="https://veios-de-timoteo.vercel.app/assets/icons/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Veios de Timóteo — patrimônio também se vive no caminho.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Veios de Timóteo">
 <meta name="twitter:description" content="Uma rota urbana que conecta os principais patrimônios de Timóteo (MG) por meio de um elemento contínuo no espaço urbano: o Veio.">
-<meta name="twitter:image" content="/assets/icons/og-image.png">
+<meta name="twitter:image" content="https://veios-de-timoteo.vercel.app/assets/icons/og-image.png">
 
 <link rel="stylesheet" href="assets/tokens/fonts.css">
 <link rel="stylesheet" href="assets/tokens/colors.css">
@@ -43,6 +43,7 @@
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
+<a class="skip-link" href="#mapa">Pular para o mapa da rota</a>
 
 <header class="navbar" id="navbar" data-tone="light">
   <a class="logo logo--sm logo--light navbar__brand" href="#top">
@@ -55,13 +56,13 @@
     </svg>
     <span class="logo__words"><span class="logo__wordmark">VEIOS</span><span class="logo__sub">DE TIMÓTEO</span></span>
   </a>
-  <nav class="navbar__links" id="navbar-links">
-    <a class="navbar__link" href="#historia" data-section="historia">A história</a>
+  <nav class="navbar__links" id="navbar-links" aria-label="Seções do site">
     <a class="navbar__link" href="#mapa" data-section="mapa">Mapa da rota</a>
+    <a class="navbar__link" href="#historia" data-section="historia">A história</a>
     <a class="navbar__link" href="#intervencoes" data-section="intervencoes">A intervenção</a>
     <a class="btn btn--inverse btn--sm navbar__action" href="#mapa">Percorrer</a>
   </nav>
-  <button class="navbar__menu-toggle" id="navbar-toggle" aria-label="Abrir menu" type="button">
+  <button class="navbar__menu-toggle" id="navbar-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbar-links" type="button">
     <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
   </button>
 </header>
@@ -69,12 +70,13 @@
 <main>
 
 <section class="hero" id="top">
-  <div class="hero__bg"><img src="assets/img/hero-bg.webp" alt="Vista aérea de Timóteo, entre o rio Piracicaba e as serras do Vale do Aço."></div>
+  <div class="hero__bg"><img src="assets/img/hero-bg.webp" width="1200" height="799" fetchpriority="high" alt="Vista aérea de Timóteo, entre o rio Piracicaba e as serras do Vale do Aço."></div>
   <div class="hero__scrim-bottom"></div>
   <div class="hero__scrim-side"></div>
   <div class="hero__content">
     <p class="eyebrow eyebrow--inverse">Patrimônio também se vive no caminho</p>
-    <a class="logo logo--lg logo--light" href="#top" aria-hidden="true" tabindex="-1">
+    <h1 class="hero__title"><span class="visually-hidden">Veios de Timóteo</span>
+    <span class="logo logo--lg logo--light" aria-hidden="true">
       <svg viewBox="0 0 84 200" width="66" height="156" aria-hidden="true" style="overflow:visible">
         <g fill="none" stroke="var(--copper-300)" stroke-width="3.2" stroke-linecap="round">
           <path d="M18 30C6 60 28 78 16 108c-11 28 11 44 1 62"/>
@@ -83,9 +85,9 @@
         </g>
       </svg>
       <span class="logo__words"><span class="logo__wordmark">VEIOS</span><span class="logo__sub">DE TIMÓTEO</span></span>
-    </a>
+    </span></h1>
     <p class="hero__claim">Os caminhos que moldaram uma cidade.</p>
-    <p class="hero__lede">Uma rota urbana que conecta os principais patrimônios de Timóteo por meio de um elemento contínuo no espaço urbano: o Veio.</p>
+    <p class="hero__lede">Uma rota urbana que conecta os principais patrimônios de Timóteo por meio de um elemento contínuo no espaço urbano: o Veio. Escolha um roteiro, siga o mapa e conheça, parada a parada, os lugares e as tradições que formaram a cidade.</p>
     <div class="hero__actions">
       <a class="btn" href="#mapa">Percorrer a rota</a>
       <a class="btn btn--inverse" href="#historia">A história</a>
@@ -98,6 +100,46 @@
   </div>
 </section>
 
+<section class="rota" id="mapa">
+  <div class="rota__wrap">
+    <div class="rota__head">
+      <div>
+        <p class="eyebrow eyebrow--inverse">Mapa da rota</p>
+        <h2 class="rota__title">Acesse cada ponto e viva a cidade em diferentes épocas.</h2>
+        <p class="rota__lede">Escolha um roteiro, toque em um ponto no mapa ou na lista e siga o Veio de parada em parada. Cada ponto traz fotografias, história e o caminho até o próximo.</p>
+      </div>
+      <div class="rota__meta">
+        <span class="rota__meta-label"><span id="rota-count">28 pontos</span></span>
+        <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--copper-300)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></svg>
+      </div>
+    </div>
+
+    <div class="rota__pills" id="rota-pills" role="group" aria-label="Escolher roteiro"></div>
+
+    <div class="rota__grid">
+      <div class="rota__map-wrap">
+        <div id="rota-map" role="region" aria-label="Mapa interativo da rota">
+          <div id="rota-map-host" style="position:absolute;inset:0"></div>
+          <div class="map-zoom">
+            <button id="map-zoom-in" aria-label="Aproximar" type="button">+</button>
+            <button id="map-zoom-out" aria-label="Afastar" type="button">−</button>
+            <button id="map-zoom-reset" class="map-zoom__reset" aria-label="Ver toda a rota" type="button">ROTA</button>
+          </div>
+        </div>
+        <div class="rota__legend-plate">
+          <ul class="route-legend">
+            <li><span class="route-legend__line"></span><span>Trajeto da rota</span></li>
+            <li><span class="route-legend__pin"></span><span>Patrimônios e lugares</span></li>
+            <li><span class="route-legend__pin route-legend__pin--event"></span><span>Manifestações culturais</span></li>
+            <li><span class="route-legend__pin route-legend__pin--active"></span><span>Ponto selecionado</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="rota__panel" id="rota-panel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
 <section class="historia" id="historia">
   <div class="historia__intro">
     <div class="historia__col">
@@ -105,19 +147,20 @@
       <h2 class="historia__heading">Território, trabalho e pessoas.</h2>
       <p class="historia__p">A história de Timóteo está diretamente ligada à formação do Vale do Aço e às transformações que marcaram o desenvolvimento da região. Antes da consolidação do município, o território era habitado por povos indígenas e, posteriormente, passou por um processo de ocupação relacionado à agricultura, à pecuária e à formação dos primeiros povoados.</p>
       <p class="historia__p">O nome Timóteo está associado à antiga Paragem do Ribeirão do Timóteo e, segundo registros históricos, faz referência a Manoel Timóteo, considerado um dos primeiros moradores e comerciantes da região.</p>
-      <div class="historia__inline-figure"><img src="assets/img/historia-figure-2.webp" alt="Monumento da Paragem do Ribeirão do Timóteo, em praça arborizada."></div>
+      <div class="historia__inline-figure"><img src="assets/img/historia-figure-2.webp" width="516" height="387" loading="lazy" alt="Monumento da Paragem do Ribeirão do Timóteo, em praça arborizada."></div>
       <p class="historia__p">A grande transformação da cidade aconteceu a partir da década de 1940, com a implantação da Companhia Aços Especiais Itabira – Acesita. A chegada da siderúrgica impulsionou o crescimento populacional e urbano, atraindo trabalhadores e promovendo a construção de bairros, escolas, equipamentos públicos e novas infraestruturas. A indústria tornou-se parte fundamental da identidade local e ajudou a consolidar Timóteo como uma das cidades que formam o Vale do Aço.</p>
       <p class="historia__p">Após pertencer administrativamente a Antônio Dias e, posteriormente, a Coronel Fabriciano, Timóteo conquistou sua autonomia político-administrativa na década de 1960, iniciando uma nova etapa de desenvolvimento.</p>
-      <div class="historia__inline-figure"><img src="assets/img/historia-figure-3.webp" alt="Vista aérea da Igreja Matriz de São Sebastião e do entorno urbano de Timóteo."></div>
+      <div class="historia__inline-figure"><img src="assets/img/historia-figure-3.webp" width="640" height="480" loading="lazy" alt="Vista aérea de uma igreja com cúpula cercada de árvores, em meio aos bairros e às serras de Timóteo."></div>
       <p class="historia__p">Ao longo do tempo, a cidade construiu uma identidade marcada pela relação entre indústria, trabalho, cultura, natureza e memória. Edificações históricas, espaços públicos, manifestações culturais e tradições preservam diferentes momentos dessa trajetória e revelam os caminhos percorridos pela população na construção da cidade.</p>
       <p class="historia__p">Conhecer Timóteo é, portanto, conhecer os veios de sua história: marcas do passado que permanecem presentes no território, na arquitetura, na cultura e na memória de sua gente, conectando as origens da cidade ao seu presente e às próximas gerações.</p>
     </div>
-    <div class="historia__figure"><img src="assets/img/historia-figure.webp" alt="Vista aérea da Igreja Matriz de São Sebastião, em Timóteo."></div>
+    <div class="historia__figure"><img src="assets/img/historia-figure.webp" width="335" height="597" loading="lazy" alt="Igreja com cúpula vista do alto, com prédios e serras de Timóteo ao fundo."></div>
   </div>
 
   <div class="historia__numbers">
-    <p class="eyebrow eyebrow--rule">Timóteo em números</p>
-    <div class="numbers-grid" id="numbers"></div>
+    <h3 class="eyebrow eyebrow--rule">Timóteo em números</h3>
+    <dl class="numbers-grid" id="numbers"></dl>
+    <p class="numbers-sources" id="numbers-sources"></p>
   </div>
 
   <div class="historia__split">
@@ -134,53 +177,27 @@
   </div>
 </section>
 
-<section class="rota" id="mapa">
-  <div class="rota__wrap">
-    <div class="rota__head">
-      <div>
-        <p class="eyebrow eyebrow--inverse">Mapa da rota</p>
-        <h2 class="rota__title">Acesse cada ponto e viva a cidade em diferentes épocas.</h2>
-      </div>
-      <div class="rota__meta">
-        <span class="rota__meta-label"><span id="rota-count">25</span> PONTOS · CLIQUE PARA VER FOTOS E DETALHES</span>
-        <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--copper-300)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></svg>
-      </div>
-    </div>
-
-    <div class="rota__pills" id="rota-pills" role="group" aria-label="Escolher roteiro temático"></div>
-
-    <div class="rota__grid">
-      <div class="rota__map-wrap">
-        <div id="rota-map">
-          <div id="rota-map-host" style="position:absolute;inset:0"></div>
-          <div class="map-zoom">
-            <button id="map-zoom-in" aria-label="Aproximar" type="button">+</button>
-            <button id="map-zoom-out" aria-label="Afastar" type="button">−</button>
-            <button id="map-zoom-reset" class="map-zoom__reset" aria-label="Ver toda a rota" type="button">ROTA</button>
-          </div>
-        </div>
-        <div class="rota__legend-plate">
-          <ul class="route-legend">
-            <li><span class="route-legend__line"></span><span>Trajeto da rota</span></li>
-            <li><span class="route-legend__pin"></span><span>Patrimônios</span></li>
-          </ul>
-        </div>
-      </div>
-      <aside class="rota__panel" id="rota-panel"></aside>
-    </div>
-  </div>
-</section>
-
 <section class="intervencoes" id="intervencoes">
   <div class="intervencoes__wrap">
     <p class="eyebrow eyebrow--rule">A intervenção urbana</p>
-    <p class="intervencoes__note">Em desenvolvimento.</p>
+    <div class="intervencoes__intro">
+      <h2 class="intervencoes__heading">O Veio no chão da cidade.</h2>
+      <p class="intervencoes__lede">O projeto Veios de Timóteo prevê também uma intervenção física no espaço público: uma faixa metálica contínua — o Veio — percorrendo a cidade e ligando, de fato, os patrimônios desta rota.</p>
+    </div>
+    <ol class="intervencoes__list">
+      <li><span class="intervencoes__n">01</span><strong>O Veio</strong><span>Faixa de metal no piso que conduz o visitante de um patrimônio ao outro.</span></li>
+      <li><span class="intervencoes__n">02</span><strong>Totens de identificação</strong><span>Placas em aço corten que identificam cada patrimônio ao longo do caminho.</span></li>
+      <li><span class="intervencoes__n">03</span><strong>Bancos interativos</strong><span>Pontos de pausa com conteúdo em áudio sobre a cidade.</span></li>
+      <li><span class="intervencoes__n">04</span><strong>Linha do tempo no piso</strong><span>Marcos da história de Timóteo inscritos no pavimento.</span></li>
+      <li><span class="intervencoes__n">05</span><strong>Iluminação cênica</strong><span>Luz de LED que acende o Veio e valoriza os patrimônios à noite.</span></li>
+    </ol>
+    <p class="intervencoes__status"><span class="intervencoes__badge">Em desenvolvimento</span> Os elementos físicos estão em fase de projeto e ainda não foram instalados. Enquanto isso, o <a href="#mapa">mapa da rota</a> é a maneira de percorrer o Veio.</p>
   </div>
 </section>
 
 <section class="manifesto" id="manifesto">
   <div class="manifesto__grid">
-    <div class="manifesto__figure"><img src="assets/img/manifesto-figure.webp" alt="Vista aérea do centro de Timóteo, com o Ginásio José York em primeiro plano."></div>
+    <div class="manifesto__figure"><img src="assets/img/manifesto-figure.webp" width="978" height="550" loading="lazy" alt="Vista aérea do centro de Timóteo, com o Ginásio José York em primeiro plano."></div>
     <div class="manifesto__body">
       <blockquote class="quote">
         <p>“Timóteo é feita de pessoas, de trabalho e de lugares que contam uma história em comum. O Veio é o que liga tudo isso.”</p>
@@ -225,24 +242,34 @@
       <span>SAIBA MAIS SOBRE A ROTA</span>
     </div>
   </div>
-  <div class="site-footer__base">VEIOS DE TIMÓTEO · PATRIMÔNIO TAMBÉM SE VIVE NO CAMINHO</div>
+  <div class="site-footer__base">
+    <span>VEIOS DE TIMÓTEO · PATRIMÔNIO TAMBÉM SE VIVE NO CAMINHO</span>
+    <span class="site-footer__credits">Mapa: imagens de satélite © Esri · trajeto: OSRM / © colaboradores do OpenStreetMap. Fotografias: acervo do projeto; créditos indicados junto às imagens.</span>
+  </div>
 </footer>
+
+<dialog class="lightbox" id="photo-dialog" aria-label="Fotografia ampliada">
+  <div class="lightbox__frame">
+    <button class="lightbox__close" type="button" data-lightbox="close" aria-label="Fechar fotografia">
+      <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <img class="lightbox__img" src="data:," alt="">
+    <div class="lightbox__bar">
+      <button class="lightbox__nav" type="button" data-lightbox="prev" aria-label="Fotografia anterior">
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      </button>
+      <p class="lightbox__caption"></p>
+      <span class="lightbox__count"></span>
+      <button class="lightbox__nav" type="button" data-lightbox="next" aria-label="Próxima fotografia">
+        <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</dialog>
 
 <script src="assets/vendor/leaflet/leaflet.js"></script>
 <script src="assets/js/icons.js"></script>
 <script src="data/rota.js"></script>
-<script>
-/* Static block generated from window.NUMEROS_TIMOTEO — data straight from
-   data/rota.js. (The pillar grid and "Os veios de Timóteo" timeline that
-   used to live here were removed from HistoriaSection.jsx upstream.) */
-(function () {
-  var numbers = document.getElementById('numbers');
-  window.NUMEROS_TIMOTEO.forEach(function (n) {
-    numbers.insertAdjacentHTML('beforeend',
-      '<div class="numbers-grid__card"><span class="numbers-grid__value">' + n.value + '</span><span class="numbers-grid__note">' + n.note + '</span></div>');
-  });
-})();
-</script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>
